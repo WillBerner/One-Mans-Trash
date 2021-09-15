@@ -1,31 +1,21 @@
-// Import npm dependencies
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
-// Import our routes and and helper functions
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 
-// Import sequelize database connection
 const sequelize = require('./config/connection');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-// Set up express server
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({ helpers });
 
-// Create session options
 const sess = {
-
-  // Get session secret from .env file
-  secret: process.env.SESSION_SECRET,
-
-  // For development, set session expiration time to one minute. Feel free to adjust
+  secret: 'Super secret secret',
   cookie: {
     maxAge: 60000
   },
@@ -36,22 +26,18 @@ const sess = {
   })
 };
 
-// Use session middleware for authentication and authorization
 app.use(session(sess));
 
 // Inform Express.js on which template engine to use
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-// Boilerplate express middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Connect backend routes to server
 app.use(routes);
 
-// Sync server with database and then start
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening at http://localhost:' + PORT));
 });
