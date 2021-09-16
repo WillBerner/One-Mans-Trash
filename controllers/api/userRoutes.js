@@ -47,7 +47,7 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      
+
       res.json({ user: userData, message: 'You are now logged in!' });
     });
 
@@ -65,6 +65,68 @@ router.post('/logout', (req, res) => {
   } else {
     res.status(404).end();
   }
+});
+
+router.put('/updateEmail', async (req, res) => {
+
+  let newEmail = { email: req.body.newEmail };
+  let oldEmail = req.body.oldEmail;
+
+  try {
+
+    const updatedEmail = await User.update(newEmail, {
+      where: {
+        email: oldEmail
+      }
+    });
+
+    res.status(200).json(updatedEmail);
+
+  } catch (error) {
+    res.status(500).json(error);
+  }
+
+});
+
+router.put('/updateName', async (req, res) => {
+
+  let newName = { name: req.body.newName };
+  let userEmail = req.body.email;
+
+  try {
+
+    const updatedName = await User.update(newName, {
+      where: {
+        email: userEmail
+      }
+    });
+
+    res.status(200).json(updatedName);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+
+});
+
+router.put('/updatePassword', async (req, res) => {
+
+  let newPassword = { password: req.body.newPassword };
+  let userEmail = req.body.email;
+
+  try {
+
+    const updatedName = await User.update(newPassword, {
+      where: {
+        email: userEmail
+      },
+      individualHooks: true,
+    });
+
+    res.status(200).json(updatedName);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+
 });
 
 // Export router for use in /controllers/api/index.js

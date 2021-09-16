@@ -27,7 +27,7 @@ const sess = {
 
   // For development, set session expiration time to one minute. Feel free to adjust
   cookie: {
-    maxAge: 60000
+    maxAge: 600000
   },
   resave: false,
   saveUninitialized: true,
