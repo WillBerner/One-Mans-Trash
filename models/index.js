@@ -1,7 +1,14 @@
-// Index file for creating associations
-// Currently empty because we only have the users table
-// Eventually multiple items to be given away will belongTo() a single user
-
 const User = require('./User');
+const Category = require('./Category');
+const Product = require('./Product');
 
-module.exports = { User };
+Category.hasMany(Product, {
+  foreignKey: 'category_id',
+});
+
+Product.belongsTo(Category, {
+  foreignKey: 'category_id',
+});
+
+module.exports = { User, Category, Product };
+
