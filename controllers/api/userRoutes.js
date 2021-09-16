@@ -67,11 +67,15 @@ router.post('/logout', (req, res) => {
   }
 });
 
+// Attempt to update a user's email address
 router.put('/updateEmail', async (req, res) => {
 
+  // Get the new email address to set
   let newEmail = { email: req.body.newEmail };
+  // Get the user's current email address to know which user to update
   let oldEmail = req.body.oldEmail;
 
+  // Try to update the database with the new email
   try {
 
     const updatedEmail = await User.update(newEmail, {
@@ -80,19 +84,23 @@ router.put('/updateEmail', async (req, res) => {
       }
     });
 
+    // If all is successful, update the client
     res.status(200).json(updatedEmail);
-
   } catch (error) {
     res.status(500).json(error);
   }
 
 });
 
+// Attempt to update a user's name
 router.put('/updateName', async (req, res) => {
 
+  // Get the new name to set
   let newName = { name: req.body.newName };
+  // Get the current user's email address to know which user to update
   let userEmail = req.body.email;
 
+  // Try to update the database with the new name
   try {
 
     const updatedName = await User.update(newName, {
@@ -101,6 +109,7 @@ router.put('/updateName', async (req, res) => {
       }
     });
 
+    // If all is successful, update the client
     res.status(200).json(updatedName);
   } catch (error) {
     res.status(500).json(error);
@@ -108,11 +117,16 @@ router.put('/updateName', async (req, res) => {
 
 });
 
+// Attempt to update a user's password
 router.put('/updatePassword', async (req, res) => {
 
+  // Get the new plaintext password to set
   let newPassword = { password: req.body.newPassword };
+  
+  // Get the current user's email address to know which user to update
   let userEmail = req.body.email;
 
+  // Try to update the database with the new password, and hash it beforehand with Hook
   try {
 
     const updatedName = await User.update(newPassword, {
@@ -122,6 +136,7 @@ router.put('/updatePassword', async (req, res) => {
       individualHooks: true,
     });
 
+    // If all is successful, update the client
     res.status(200).json(updatedName);
   } catch (error) {
     res.status(500).json(error);
