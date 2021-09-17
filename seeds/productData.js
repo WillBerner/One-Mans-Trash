@@ -7,6 +7,7 @@ const productdata = [
         img_url: 'washer.jpg',
         location_zipcode: '27513',
         category_id: 1,
+        user_id: 2,
     },
     {
         product_name: 'stove top',
@@ -14,6 +15,7 @@ const productdata = [
         img_url: 'stove-top.jpg',
         location_zipcode: '27607',
         category_id: 1,
+        user_id: 2,
     },
     {
         product_name: 'Couch',
@@ -21,6 +23,7 @@ const productdata = [
         img_url: 'couch.jpg',
         location_zipcode: '27604',
         category_id: 2,
+        user_id: 2,
     },
     {
         product_name: 'Side table',
@@ -28,6 +31,7 @@ const productdata = [
         img_url: 'side-table.jpg',
         location_zipcode: '27604',
         category_id: 2,
+        user_id: 2,
     },
     {
         product_name: 'Gameboy Color',
@@ -35,6 +39,7 @@ const productdata = [
         img_url: 'gameboy.jpg',
         location_zipcode: '27602',
         category_id: 3,
+        user_id: 2,
     },
     {
         product_name: 'Old TV',
@@ -42,6 +47,7 @@ const productdata = [
         img_url: 'old-tv.jpg',
         location_zipcode: '27607',
         category_id: 3,
+        user_id: 2,
     },
     {
         product_name: 'Rusted Screwdrivers',
@@ -49,6 +55,7 @@ const productdata = [
         img_url: 'screwdriver.jpg',
         location_zipcode: '27560',
         category_id: 4,
+        user_id: 2,
     },
     {
         product_name: 'Axe',
@@ -56,6 +63,7 @@ const productdata = [
         img_url: 'axe.jpg',
         location_zipcode: '27616',
         category_id: 4,
+        user_id: 2,
     },
 
 ];
