@@ -22,3 +22,85 @@ header, .project:not(:last-child) {
   font-weight: bold;
   margin-left: -5px;
 }
+
+body {
+  background-color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+.h-90 {
+  height: 90px;
+}
+
+.rounded {
+  border-radius: 10px;
+}
+
+.h-170 {
+  height: 170px;
+}
+
+.h-1185 {
+  height: 1185px;
+}
+
+.mb-95 {
+  margin-top: 95px;
+}
+
+.mt-230{
+  margin-top: 230px;
+}
+
+.mt-3r {
+  margin-top: -3rem;
+}
+
+.mt-35 {
+  margin-top: 35px;
+}
+
+.b-bot {
+  border-bottom: 1px solid rgb(153, 25, 25);
+}
+
+.border {
+  border: 1px solid black
+}
+
+.mr-30 {
+  margin-right: 30px;
+}
+
+.w-95 {
+  width: 95%;
+}
+
+.h-35 {
+  height: 35px;
+}
+
+.ml-2r {
+  margin-left: 2rem;
+}
+
+.card-border {
+  border: 1px solid rgb(153, 25, 25);
+}
+
+.relative {
+  position: relative;
+}
+
+.shelf-header {
+  position: absolute;
+  top: -75px;
+  left: -22px;
+}
+
+.mb-105:not(:first-child) {
+  margin-top: 105px;
+}
+
+
+

@@ -7,7 +7,91 @@ router.get('/', async (req, res) => {
     
     // Pass serialized session flag into template
     res.render('homepage', {
-      logged_in: req.session.logged_in 
+      logged_in: req.session.logged_in,
+      shelves: [
+        {
+          title: "Today's Picks",
+          products: [
+            {
+              description: 'whatever',
+              price: 'free'
+            },
+            {
+              description: 'soft',
+              price: '$1'
+            },
+            {
+              description: 'car',
+              price: '$2'
+            },            
+            {
+              description: 'horse',
+              price: '$3'
+            }
+          ]
+        },
+        {
+          title: "ELECTRONICS",
+          products: [
+            {
+              description: 'Phone',
+              price: 'free'
+            },
+            {
+              description: 'Tablet',
+              price: '$1'
+            },
+            {
+              description: 'computer',
+              price: '$2'
+            },            
+            {
+              description: 'iPad',
+              price: '$3'
+            }
+          ]
+        },{
+          title: "APPAREL",
+          products: [
+            {
+              description: 'underwear',
+              price: 'free'
+            },
+            {
+              description: 'shirt',
+              price: '$1'
+            },
+            {
+              description: 'pants',
+              price: '$2'
+            },            
+            {
+              description: 'socks',
+              price: '$3'
+            }
+          ]
+        },{
+          title: "HOME",
+          products: [
+            {
+              description: 'couch',
+              price: 'free'
+            },
+            {
+              description: 'chair',
+              price: '$1'
+            },
+            {
+              description: 'clock',
+              price: '$2'
+            },            
+            {
+              description: 'art',
+              price: '$3'
+            }
+          ]
+        }
+      ]
     });
 
   } catch (err) {
