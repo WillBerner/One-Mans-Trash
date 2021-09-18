@@ -1,3 +1,4 @@
+{{!-- Main.handlebars is always rendered --}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,37 +9,19 @@
   <script src="https://kit.fontawesome.com/c1070ced3f.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet" />
-  {{!-- <link rel="stylesheet" href="/css/jass.css"> --}}
   <link rel="stylesheet" href="/css/style.css"/>
   
 </head>
 
 <body>
-  {{!-- <div class="flex-column justify-space-around"> --}}
     <div>
-    {{!-- <header class="display-flex justify-space-between align-center p-2">
-
-      <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-      </nav>
-    </header> --}}
-    {{!-- <main class="container container-fluid mt-5"> --}}
-      <!-- Render the sub layout -->
       {{{ body }}}
-    {{!-- </main> --}}
+    </div>
 
-  </div>
-
-  <!-- Render script for logged in users only -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
+
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-// Not sure if we use this currently
+// Not currently used, but could be useful eventually.
 
 module.exports = {
   format_date: (date) => {
