@@ -1,7 +1,46 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
-    <p>(This is a protected user route)</p>
-    <p>Currently for development, I set sessions to last for only 60 seconds</p>
+    <h2 style="margin-bottom: 30px;">Welcome, {{name}}!</h2>
+
+    <div class="col" style="margin-bottom: 100px;">
+      <h3>Your items</h3>
+
+      <p>(User's posted items here maybe?)</p>
+      <p> item item item item item item item item item item item item</p>
+
+    </div>
+
+    <div class="col">
+
+      <h5>Update profile information</h5>
+
+      <form class="form update-email-form">
+        <div class="form-group">
+          <label for="email-update">Email: (currently <span id="current-email">{{email}}</span>)</label>
+          <input class="form-input" type="text" id="email-update" />
+          <button class="btn btn-primary" type="submit">Update email</button>
+        </div>
+      </form>
+
+      <form class="form update-name-form">
+        <div class="form-group">
+          <label for="name-update">Name:</label>
+          <input class="form-input" type="text" id="name-update" />
+          <button class="btn btn-primary" type="submit">Update name</button>
+        </div>
+      </form>
+
+      <form class="form update-password-form">
+        <div class="form-group">
+          <label for="password-update">Password:</label>
+          <input class="form-input" type="text" id="password-update" />
+          <button class="btn btn-primary" type="submit">Update password</button>
+        </div>
+      </form>
+
+    </div>
+
   </div>
 </div>
+
+<script src="./js/updateInfo.js"></script>
