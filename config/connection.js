@@ -1,5 +1,6 @@
 // Import necessary npm dependencies
 const Sequelize = require('sequelize');
+// const mysql = require('mysql2');
 require('dotenv').config();
 
 // Declare sequelize variable in global scope to export
