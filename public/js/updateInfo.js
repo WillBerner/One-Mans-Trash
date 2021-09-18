@@ -19,9 +19,10 @@ const updateEmailHandler = async (event) => {
     // Would be better to eventually use something other than an alert
     if (response.ok) {
         alert('Email Address updated successfully');
+        // Page needs to be re-rendered to successfully sequentially update information (only necessary for email changes)
         document.location.replace('/profile');
     } else {
-        console.log(response);
+        alert(response.statusText);
     }
 
 }
@@ -47,9 +48,8 @@ const updateNameHandler = async (event) => {
     // Would be better to eventually use something other than an alert
     if (response.ok) {
         alert('Name updated successfully');
-        document.location.replace('/profile');
     } else {
-        console.log(response);
+        alert(response.statusText);
     }
 
 }
@@ -75,9 +75,8 @@ const updatePasswordHandler = async (event) => {
     // Would be better to eventually use something other than an alert
     if (response.ok) {
         alert('Password updated successfully');
-        document.location.replace('/profile');
     } else {
-        console.log(response);
+        alert(response.statusText);
     }
 
 }
