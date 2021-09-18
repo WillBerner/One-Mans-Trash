@@ -16,11 +16,25 @@ router.post('/', withAuth, async (req, res) => {
     //      "description": "some description",
     //      "img_url": "url",
     //      "location_zipcode": "12345",
-    //      "category_id": "12345",
-    //      "user_id": "12345"
+    //      "category_name": "Electronics"
     // }
 
     try {
+
+        // Get category data by category name from database
+        const category = await Category.findOne({ 
+            where: {
+                category_name: req.body.category_name
+            }
+        });
+
+        // Get category ID from category data and add it to request body
+        req.body.category_id = category.dataValues.id;
+
+        // Get user_id from session and add it to request body
+        req.body.user_id = req.session.user_id;
+
+        // Create new product using request body
         const product = await Product.create(req.body);
 
         res.status(200).json(product);
@@ -65,5 +79,22 @@ router.get('/', async (req, res) => {
 //         res.status(500).json(err);
 //     }
 // });
+
+router.delete('/:id', async (req, res) => {
+
+    try {
+        const deletedProduct = await Product.destroy({
+            where: { 
+                id: req.params.id
+            }
+        });
+
+        res.status(200).json({ message: 'Product deleted successfully'});
+
+    } catch (error) {
+        res.status(500).json(error);
+    }
+
+});
 
 module.exports = router;

@@ -8,8 +8,7 @@ const createProductHandler = async (event) => {
         "description": "Some Description",
         "img_url": "url",
         "location_zipcode": "27510",
-        "category_id": "1",
-        "user_id": "2"
+        "category_name": "Electronics",
     }
 
     // Attempt to create the new product
