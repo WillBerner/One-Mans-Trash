@@ -1,7 +1,35 @@
 // Boilerplate router creation
 const router = require('express').Router();
 
+// Importing models
 const { Product, Category, User } = require('../../models');
+
+// Importing authentication middelware for protected routes
+const withAuth = require('../../utils/auth');
+
+// Add a new product if a user is logged in using withAuth middleware
+router.post('/', withAuth, async (req, res) => {
+    
+    // Req.body should look like:
+    // {
+    //      "product_name": "something",
+    //      "description": "some description",
+    //      "img_url": "url",
+    //      "location_zipcode": "12345",
+    //      "category_id": "12345",
+    //      "user_id": "12345"
+    // }
+
+    try {
+        const product = await Product.create(req.body);
+
+        res.status(200).json(product);
+        
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+
 
 router.get('/', async (req, res) => {
     try {
@@ -37,4 +65,5 @@ router.get('/', async (req, res) => {
 //         res.status(500).json(err);
 //     }
 // });
+
 module.exports = router;
