@@ -4,115 +4,114 @@ const router = require('express').Router();
 // Import user model and helper authorization middleware
 const { User } = require('../models');
 const withAuth = require('../utils/auth');
-
+const dataObject = {
+  // Mock shelves can be removed when the backend feature is ready
+  shelves: [
+    {
+      title: "Today's Picks",
+      products: [
+        {
+          description: 'whatever',
+          price: 'free'
+        },
+        {
+          description: 'soft',
+          price: '$1'
+        },
+        {
+          description: 'car',
+          price: '$2'
+        },            
+        {
+          description: 'horse',
+          price: '$3'
+        }
+      ]
+    },
+    {
+      title: "ELECTRONICS",
+      products: [
+        {
+          description: 'Phone',
+          price: 'free'
+        },
+        {
+          description: 'Tablet',
+          price: '$1'
+        },
+        {
+          description: 'computer',
+          price: '$2'
+        },            
+        {
+          description: 'iPad',
+          price: '$3'
+        }
+      ]
+    },{
+      title: "APPAREL",
+      products: [
+        {
+          description: 'underwear',
+          price: 'free'
+        },
+        {
+          description: 'shirt',
+          price: '$1'
+        },
+        {
+          description: 'pants',
+          price: '$2'
+        },            
+        {
+          description: 'socks',
+          price: '$3'
+        }
+      ]
+    },{
+      title: "HOME",
+      products: [
+        {
+          description: 'couch',
+          price: 'free'
+        },
+        {
+          description: 'chair',
+          price: '$1'
+        },
+        {
+          description: 'clock',
+          price: '$2'
+        },            
+        {
+          description: 'art',
+          price: '$3'
+        }
+      ]
+    }
+  ], 
+  // Mock categories can be removed when the backend feature is ready
+  categories: [
+    {
+      category_name: "BROWSE ALL"
+    },
+    {
+      category_name: "ELECTRONICS"
+    },
+    {
+      category_name: "HOME"
+    },
+    {
+      category_name: "GAMING"
+    }
+  ]
+}
 // Homepage route - render homepage.handlebars
 router.get('/', async (req, res) => {
   try {
     
     // Pass serialized session value into homepage template
-    res.render('homepage', {
-      logged_in: req.session.logged_in,
-      // Mock shelves can be removed when the backend feature is ready
-      shelves: [
-        {
-          title: "Today's Picks",
-          products: [
-            {
-              description: 'whatever',
-              price: 'free'
-            },
-            {
-              description: 'soft',
-              price: '$1'
-            },
-            {
-              description: 'car',
-              price: '$2'
-            },            
-            {
-              description: 'horse',
-              price: '$3'
-            }
-          ]
-        },
-        {
-          title: "ELECTRONICS",
-          products: [
-            {
-              description: 'Phone',
-              price: 'free'
-            },
-            {
-              description: 'Tablet',
-              price: '$1'
-            },
-            {
-              description: 'computer',
-              price: '$2'
-            },            
-            {
-              description: 'iPad',
-              price: '$3'
-            }
-          ]
-        },{
-          title: "APPAREL",
-          products: [
-            {
-              description: 'underwear',
-              price: 'free'
-            },
-            {
-              description: 'shirt',
-              price: '$1'
-            },
-            {
-              description: 'pants',
-              price: '$2'
-            },            
-            {
-              description: 'socks',
-              price: '$3'
-            }
-          ]
-        },{
-          title: "HOME",
-          products: [
-            {
-              description: 'couch',
-              price: 'free'
-            },
-            {
-              description: 'chair',
-              price: '$1'
-            },
-            {
-              description: 'clock',
-              price: '$2'
-            },            
-            {
-              description: 'art',
-              price: '$3'
-            }
-          ]
-        }
-      ], 
-      // Mock categories can be removed when the backend feature is ready
-      categories: [
-        {
-          category_name: "BROWSE ALL"
-        },
-        {
-          category_name: "ELECTRONICS"
-        },
-        {
-          category_name: "HOME"
-        },
-        {
-          category_name: "GAMING"
-        }
-      ]
-    });
+    res.render('homepage',{ ...dataObject, logged_in: req.session.logged_in});
 
   } catch (err) {
     res.status(500).json(err);
@@ -153,6 +152,11 @@ router.get('/login', (req, res) => {
 
   // If nobody's logged in, render login.handlebars 
   res.render('login');
+});
+
+router.get('/logout', (req, res) => {
+  req.session.logged_in = false
+  res.render('homepage',{ ...dataObject, logged_in: req.session.logged_in});
 });
 
 // Export router for use in controllers/index.js
