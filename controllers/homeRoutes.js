@@ -12,6 +12,7 @@ router.get('/', async (req, res) => {
     // Pass serialized session value into homepage template
     res.render('homepage', {
       logged_in: req.session.logged_in,
+      // Mock shelves can be removed when the backend feature is ready
       shelves: [
         {
           title: "Today's Picks",
@@ -94,6 +95,21 @@ router.get('/', async (req, res) => {
               price: '$3'
             }
           ]
+        }
+      ], 
+      // Mock categories can be removed when the backend feature is ready
+      categories: [
+        {
+          category_name: "BROWSE ALL"
+        },
+        {
+          category_name: "ELECTRONICS"
+        },
+        {
+          category_name: "HOME"
+        },
+        {
+          category_name: "GAMING"
         }
       ]
     });

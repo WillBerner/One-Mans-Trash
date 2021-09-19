@@ -28,6 +28,10 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.bg-grey {
+  background-color: #4c4c47;
+}
+
 .h-90 {
   height: 90px;
 }
@@ -72,8 +76,16 @@ body {
   margin-left: 2rem;
 }
 
+.ml-55 {
+  margin-left: 55px;
+}
+
 .mb-105:not(:first-child) {
   margin-top: 105px;
+}
+
+.pt-35:not(:first-child) {
+  padding-top: 35px;
 }
 
 .b-bot {
