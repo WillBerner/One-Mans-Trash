@@ -1,26 +1,27 @@
 <!-- HEADER -->
 <div class="columns">
   <div class="column is-3">
-    <div class="navbar h-170 rounded ml-5 mt-5 is-dark bg-grey">
+    <div class="navbar h-170 rounded ml-5 mt-5 is-dark">
       <div class="column has-text-centered has-text-weight-medium is-size-3">
-        One Man's Trash
+        <a class="has-text-white" href="/">One Man's Trash</a>
+
       </div>
     </div>
   </div>
   <div class="column">
-    <nav class="navbar h-90 rounded is-dark mr-5 mt-5 ml-5 bg-grey" role="navigation" aria-label="main navigation">
+    <nav class="navbar h-90 rounded is-dark mr-5 mt-5 ml-5" role="navigation" aria-label="main navigation">
       <div class="navbar-menu" id="nav-links">
         <div class="navbar-end">
           <a class="navbar-item"><i class="fas fa-shopping-cart fa-2x"></i></a>
           <a class="navbar-item"><i class="fas fa-comment fa-2x"></i></a>
           <a class="navbar-item"><i class="fas fa-user-circle fa-2x"></i></a>
-            {{#if logged_in}}
-            <a class="navbar-item" id="logout"><i class="fas fa-sign-out-alt fa-2x"></i></a>
-            {{else}}
-            <a class="navbar-item" href="login"><i class="fas fa-sign-in-alt fa-2x"></i></a>
-            {{/if}}
+          {{#if logged_in}}
+          <a class="navbar-item" id="logout"><i class="fas fa-sign-out-alt fa-2x"></i></a>
+          {{else}}
+          <a class="navbar-item" href="login"><i class="fas fa-sign-in-alt fa-2x"></i></a>
+          {{/if}}
         </div>
       </div>
     </nav>
   </div>
-</div>            
+</div>
