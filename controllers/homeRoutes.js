@@ -154,9 +154,11 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/logout', (req, res) => {
-  req.session.logged_in = false
-  res.render('homepage',{ ...dataObject, logged_in: req.session.logged_in});
+router.get('/logout', async (req, res) => {
+  await fetch('/api/users/logout', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  });
 });
 
 // Export router for use in controllers/index.js
