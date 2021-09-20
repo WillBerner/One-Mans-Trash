@@ -84,6 +84,10 @@ body {
   padding-top: 35px;
 }
 
+.rounded {
+  border-radius: 10px;
+}
+
 .b-bot {
   border-bottom: 1px solid rgb(153, 25, 25);
 }
