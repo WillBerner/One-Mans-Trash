@@ -5,4 +5,3 @@ function changeZip() {
     oldZipCode.textContent = newZip
 
 };
-

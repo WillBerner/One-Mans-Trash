@@ -48,10 +48,6 @@ body {
   height: 35px;
 }
 
-.rounded {
-  border-radius: 10px;
-}
-
 .mb-95 {
   margin-top: 95px;
 }
@@ -72,6 +68,10 @@ body {
   margin-right: 30px;
 }
 
+.mb-105:not(:first-child) {
+  margin-top: 105px;
+}
+
 .ml-2r {
   margin-left: 2rem;
 }
@@ -80,12 +80,12 @@ body {
   margin-left: 55px;
 }
 
-.mb-105:not(:first-child) {
-  margin-top: 105px;
-}
-
 .pt-35:not(:first-child) {
   padding-top: 35px;
+}
+
+.rounded {
+  border-radius: 10px;
 }
 
 .b-bot {
