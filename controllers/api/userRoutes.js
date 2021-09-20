@@ -57,14 +57,15 @@ router.post('/login', async (req, res) => {
 });
 
 // Log user out by destroying their session (if they are actually logged in)
-router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
+router.get('/logout', (req, res) => {
+  try {
     req.session.destroy(() => {
       res.status(204).end();
     });
-  } else {
-    res.status(404).end();
-  }
+  } catch (error) {
+    res.status(500).end();
+  };
+  
 });
 
 // Attempt to update a user's email address
