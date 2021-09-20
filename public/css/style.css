@@ -89,7 +89,7 @@ body {
 }
 
 .b-bot {
-  border-bottom: 1px solid rgb(153, 25, 25);
+  border-bottom: 1px solid black;
 }
 
 .border {
@@ -97,7 +97,7 @@ body {
 }
 
 .card-border {
-  border: 1px solid rgb(153, 25, 25);
+  border: 1px solid black;
 }
 
 .w-95 {
