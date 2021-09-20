@@ -127,7 +127,7 @@ const mockShelves = [
 // Homepage route - render homepage.handlebars
 const getAllCategories = async () => {
   const categoryData = await Category.findAll({
-    include: [{ model: Product, include: [{ model: User }] }],
+    include: [{ model: Product }],
     
   });
   const allCategories = categoryData.map((category) => category.get({ plain: true }))
