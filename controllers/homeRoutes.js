@@ -128,12 +128,6 @@ router.get("/", async (req, res) => {
       // Mock categories can be removed when the backend feature is ready
       categories: allCategories,
     });
-    const allCategories = categoryData.map((category) =>
-      category.get({ plain: true })
-    );
-    console.log(allCategories);
-    // Pass serialized session value into homepage template
-    res.render('homepage',{ ...dataObject, logged_in: req.session.logged_in});
 
   } catch (err) {
     console.log(err);
