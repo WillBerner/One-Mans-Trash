@@ -6,86 +6,102 @@ const { User, Product, Category } = require("../models");
 const withAuth = require("../utils/auth");
 var shelves = [
   {
-    title: "Today's Picks",
+    category_name: "Today's Picks",
     products: [
       {
         description: "whatever",
-        price: "free",
+        product_name: "free",
+        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
       },
       {
         description: "soft",
-        price: "$1",
+        product_name: "$1",
+        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
       },
       {
         description: "car",
-        price: "$2",
+        product_name: "$2",
+        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
       },
       {
         description: "horse",
-        price: "$3",
+        product_name: "$3",
+        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
       },
     ],
   },
   {
-    title: "ELECTRONICS",
+    category_name: "ELECTRONICS",
     products: [
       {
         description: "Phone",
-        price: "free",
+        product_name: "free",
+        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
       },
       {
         description: "Tablet",
-        price: "$1",
+        product_name: "$1",
+        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
       },
       {
         description: "computer",
-        price: "$2",
+        product_name: "$2",
+        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
       },
       {
         description: "iPad",
-        price: "$3",
+        product_name: "$3",
+        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
       },
     ],
   },
   {
-    title: "APPAREL",
+    category_name: "APPAREL",
     products: [
       {
         description: "underwear",
-        price: "free",
+        product_name: "free",
+        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
       },
       {
         description: "shirt",
-        price: "$1",
+        product_name: "$1",
+        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
       },
       {
         description: "pants",
-        price: "$2",
+        product_name: "$2",
+        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
       },
       {
         description: "socks",
-        price: "$3",
+        product_name: "$3",
+        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
       },
     ],
   },
   {
-    title: "HOME",
+    category_name: "HOME",
     products: [
       {
         description: "couch",
-        price: "free",
+        product_name: "free",
+        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
       },
       {
         description: "chair",
-        price: "$1",
+        product_name: "$1",
+        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
       },
       {
         description: "clock",
-        price: "$2",
+        product_name: "$2",
+        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
       },
       {
         description: "art",
-        price: "$3",
+        product_name: "$3",
+        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
       },
     ],
   },
