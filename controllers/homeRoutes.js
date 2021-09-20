@@ -1,32 +1,37 @@
 // Boilerplate router creation
 const router = require("express").Router();
 
+const { all } = require(".");
 // Import user model and helper authorization middleware
 const { User, Product, Category } = require("../models");
 const withAuth = require("../utils/auth");
-var shelves = [
+const mockShelves = [
   {
     category_name: "Today's Picks",
     products: [
       {
         description: "whatever",
         product_name: "free",
-        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
+        img_url:
+          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
       },
       {
         description: "soft",
         product_name: "$1",
-        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
+        img_url:
+          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
       },
       {
         description: "car",
         product_name: "$2",
-        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
+        img_url:
+          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
       },
       {
         description: "horse",
         product_name: "$3",
-        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
+        img_url:
+          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
       },
     ],
   },
@@ -36,22 +41,26 @@ var shelves = [
       {
         description: "Phone",
         product_name: "free",
-        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
+        img_url:
+          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
       },
       {
         description: "Tablet",
         product_name: "$1",
-        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
+        img_url:
+          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
       },
       {
         description: "computer",
         product_name: "$2",
-        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
+        img_url:
+          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
       },
       {
         description: "iPad",
         product_name: "$3",
-        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
+        img_url:
+          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
       },
     ],
   },
@@ -61,22 +70,26 @@ var shelves = [
       {
         description: "underwear",
         product_name: "free",
-        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
+        img_url:
+          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
       },
       {
         description: "shirt",
         product_name: "$1",
-        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
+        img_url:
+          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
       },
       {
         description: "pants",
         product_name: "$2",
-        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
+        img_url:
+          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
       },
       {
         description: "socks",
         product_name: "$3",
-        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
+        img_url:
+          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
       },
     ],
   },
@@ -86,49 +99,54 @@ var shelves = [
       {
         description: "couch",
         product_name: "free",
-        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
+        img_url:
+          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
       },
       {
         description: "chair",
         product_name: "$1",
-        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
+        img_url:
+          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
       },
       {
         description: "clock",
         product_name: "$2",
-        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
+        img_url:
+          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
       },
       {
         description: "art",
         product_name: "$3",
-        img_url: "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg"
+        img_url:
+          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
       },
     ],
   },
 ];
 
 // Homepage route - render homepage.handlebars
+const getAllCategories = async () => {
+  const categoryData = await Category.findAll({
+    include: [{ model: Product, include: [{ model: User }] }],
+    
+  });
+  const allCategories = categoryData.map((category) => category.get({ plain: true }))
+  return allCategories
+}; 
+
 router.get("/", async (req, res) => {
   console.log("hit home route");
   try {
-    const categoryData = await Category.findAll({
-      include: [{ model: Product, include: [{ model: User }] }],
-    });
-
-    const allCategories = categoryData.map((category) =>
-      category.get({ plain: true })
-    );
-    console.log(allCategories);
-
+    const categoryData = await getAllCategories()
+    
     // Pass serialized session value into homepage template
     res.render("homepage", {
       logged_in: req.session.logged_in,
       // Mock shelves can be removed when the backend feature is ready
-      shelves,
+      shelves: mockShelves,
       // Mock categories can be removed when the backend feature is ready
-      categories: allCategories,
-    });
-
+      categories: categoryData
+    })
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -168,10 +186,81 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.get('/logout', async (req, res) => {
-  await fetch('/api/users/logout', {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
+router.get("/logout", async (req, res) => {
+  await fetch("/api/users/logout", {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+});
+
+router.get("/category/:categoryId", async (req, res) => {
+  const categoryData = await getAllCategories()
+  // console.log(allCategories);
+  const id = req.params.categoryId;
+  console.log(id);
+  res.render("homepage", {
+    shelves: [
+      {
+        category_name: id,
+        products: [
+          {
+            description: "whatever",
+            product_name: "free",
+            img_url:
+              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
+          },
+          {
+            description: "soft",
+            product_name: "$1",
+            img_url:
+              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
+          },
+          {
+            description: "car",
+            product_name: "$2",
+            img_url:
+              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
+          },
+          {
+            description: "horse",
+            product_name: "$3",
+            img_url:
+              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
+          },
+          {
+            description: "whatever",
+            product_name: "free",
+            img_url:
+              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
+          },
+          {
+            description: "soft",
+            product_name: "$1",
+            img_url:
+              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
+          },
+          {
+            description: "car",
+            product_name: "$2",
+            img_url:
+              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
+          },
+          {
+            description: "horse",
+            product_name: "$3",
+            img_url:
+              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
+          },
+          {
+            description: "whatever",
+            product_name: "free",
+            img_url:
+              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
+          },
+        ],
+      },
+    ],
+    categories: categoryData
   });
 });
 
