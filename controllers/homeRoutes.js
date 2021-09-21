@@ -40,48 +40,53 @@ const mockShelves = [
 // Homepage route - render homepage.handlebars
 const getAllCategories = async () => {
   const categoryData = await Category.findAll({
+
     include: [{ model: Product }],
     
+
   });
-  const allCategories = categoryData.map((category) => category.get({ plain: true }));
+  const allCategories = categoryData.map((category) =>
+    category.get({ plain: true })
+  );
   return allCategories;
-}; 
+};
 
 const getAllProducts = async () => {
   const productData = await Product.findAll({
     include: [{ model: Category }],
   });
-  const allListings = productData.map((listing) => listing.get({ plain: true }));
+  const allListings = productData.map((listing) =>
+    listing.get({ plain: true })
+  );
   // console.log(allListings);
   return allListings;
 };
 
 const getProductById = async (productId) => {
-  const product = await (await Product.findByPk(productId)).get({ plain: true })
+  const product = await (
+    await Product.findByPk(productId)
+  ).get({ plain: true });
   return product;
 };
 
 router.get("/", async (req, res) => {
   console.log("hit home route");
   try {
-    const categoryData = await getAllCategories()
-    const productData = await getAllProducts()
+    const categoryData = await getAllCategories();
+    const productData = await getAllProducts();
     const shelfData = {
       category_name: "anything",
-      products: productData
-    }
-    
+      products: productData,
+    };
+
     // Pass serialized session value into homepage template
     res.render("homepage", {
       logged_in: req.session.logged_in,
       // Mock shelves can be removed when the backend feature is ready
-      shelves: [
-        shelfData
-      ],
+      shelves: [shelfData],
       // Mock categories can be removed when the backend feature is ready
       categories: categoryData,
-      
-    })
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -122,7 +127,7 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/category/:categoryId", async (req, res) => {
-  const categoryData = await getAllCategories()
+  const categoryData = await getAllCategories();
   // console.log(allCategories);
   const id = req.params.categoryId;
   // console.log(id);
@@ -188,22 +193,21 @@ router.get("/category/:categoryId", async (req, res) => {
         ],
       },
     ],
-    categories: categoryData
+    categories: categoryData,
   });
 });
 
-router.get("/listing/:listingId", async  (req, res) => {
+router.get("/listing/:listingId", async (req, res) => {
   const categoryData = await getAllCategories();
-  
-  const id = req.params.listingId;
-  const productData = await getProductById(id)
-  const temp = {
 
+  const id = req.params.listingId;
+  const productData = await getProductById(id);
+  const temp = {
     categories: categoryData,
-    ...productData
-  }
-  res.render("productPage", temp )
-})
+    ...productData,
+  };
+  res.render("productPage", temp);
+});
 
 // Export router for use in controllers/index.js
 module.exports = router;
