@@ -186,13 +186,6 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.get("/logout", async (req, res) => {
-  await fetch("/api/users/logout", {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  });
-});
-
 router.get("/category/:categoryId", async (req, res) => {
   const categoryData = await getAllCategories()
   // console.log(allCategories);
