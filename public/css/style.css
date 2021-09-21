@@ -124,6 +124,10 @@ body {
   width: 100%;
 }
 
+.w-fit-content {
+  width: fit-content;
+}
+
 .relative {
   position: relative;
 }
