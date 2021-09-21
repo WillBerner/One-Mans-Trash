@@ -40,7 +40,10 @@ const mockShelves = [
 // Homepage route - render homepage.handlebars
 const getAllCategories = async () => {
   const categoryData = await Category.findAll({
-    include: [{ model: Product, include: [{ model: User }] }],
+
+    include: [{ model: Product }],
+    
+
   });
   const allCategories = categoryData.map((category) =>
     category.get({ plain: true })
@@ -121,13 +124,6 @@ router.get("/login", (req, res) => {
 
   // If nobody's logged in, render login.handlebars
   res.render("login");
-});
-
-router.get("/logout", async (req, res) => {
-  await fetch("/api/users/logout", {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  });
 });
 
 router.get("/category/:categoryId", async (req, res) => {
