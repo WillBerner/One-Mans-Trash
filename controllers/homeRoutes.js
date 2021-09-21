@@ -264,5 +264,13 @@ router.get("/category/:categoryId", async (req, res) => {
   });
 });
 
+router.get("/listing", async  (req, res) => {
+  const categoryData = await getAllCategories()
+  res.render("productPage", {
+
+    categories: categoryData
+  })
+})
+
 // Export router for use in controllers/index.js
 module.exports = router;
