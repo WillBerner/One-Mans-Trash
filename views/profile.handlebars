@@ -1,10 +1,44 @@
 {{!-- Template for a specific user's profile page --}}
 
-<div class="row">
-  <div class="col-auto">
-    <h2 style="margin-bottom: 30px;">Welcome, {{name}}!</h2>
+<div class="columns">
+  <div class="column">
+    <h2 class="title is-1 has-text-centered">Welcome, {{name}}!</h2>
+  <div class="columns">
+    
+    <div class="column  is-narrow">
 
-    <div class="col" style="margin-bottom: 100px;">
+      <figure class="image is-128x128">
+        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+      </figure>
+
+      <h5>Update profile information</h5>
+
+      <form class="form update-email-form">
+        <div class="form-group">
+          <label for="email-update" class="label">Email: (currently <span id="current-email">{{email}}</span>)</label>
+          <input class="form-input input" type="text" id="email-update" />
+          <button class="button is-primary" type="submit">Update email</button>
+        </div>
+      </form>
+
+      <form class="form update-name-form">
+        <div class="form-group">
+          <label for="name-update" class="label">Name:</label>
+          <input class="form-input input" type="text" id="name-update" />
+          <button class="button is-primary" type="submit">Update name</button>
+        </div>
+      </form>
+
+      <form class="form update-password-form">
+        <div class="form-group">
+          <label for="password-update" class="label">Password:</label>
+          <input class="form-input input" type="text" id="password-update" />
+          <button class="button is-primary" type="submit">Update password</button>
+        </div>
+      </form>
+
+    </div>
+    <div class="column">
       <h3>Your items</h3>
 
       <p>(User's posted items here maybe?)</p>
@@ -21,36 +55,7 @@
 
     </div>
 
-    <div class="col">
-
-      <h5>Update profile information</h5>
-
-      <form class="form update-email-form">
-        <div class="form-group">
-          <label for="email-update">Email: (currently <span id="current-email">{{email}}</span>)</label>
-          <input class="form-input" type="text" id="email-update" />
-          <button class="btn btn-primary" type="submit">Update email</button>
-        </div>
-      </form>
-
-      <form class="form update-name-form">
-        <div class="form-group">
-          <label for="name-update">Name:</label>
-          <input class="form-input" type="text" id="name-update" />
-          <button class="btn btn-primary" type="submit">Update name</button>
-        </div>
-      </form>
-
-      <form class="form update-password-form">
-        <div class="form-group">
-          <label for="password-update">Password:</label>
-          <input class="form-input" type="text" id="password-update" />
-          <button class="btn btn-primary" type="submit">Update password</button>
-        </div>
-      </form>
-
-    </div>
-
+  </div>
   </div>
 </div>
 
