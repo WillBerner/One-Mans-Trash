@@ -56,12 +56,28 @@ body {
   margin-top: 230px;
 }
 
+.mt-2r {
+  margin-top: -2rem;
+}
+
 .mt-3r {
   margin-top: -3rem;
 }
 
+.mt-6r {
+  margin-top: -3rem;
+}
+
+.mt-7r {
+  margin-top: -7rem;
+}
+
 .mt-35 {
   margin-top: 35px;
+}
+
+.mt-27 {
+  margin-top: 27px;
 }
 
 .mr-30 {
