@@ -5,13 +5,10 @@ const updateEmailHandler = async (event) => {
     // Collect value from email update field
     const newEmail = document.querySelector('#email-update').value.trim();
 
-    // Get user's current email so we know which user to update in db
-    const oldEmail = document.querySelector('#current-email').innerText;
-
     // Attempt to update the email address
     const response = await fetch('/api/users/updateEmail', {
         method: 'PUT',
-        body: JSON.stringify({ newEmail, oldEmail }),
+        body: JSON.stringify({ newEmail }),
         headers: { 'Content-Type': 'application/json' },
     });
 
@@ -34,13 +31,10 @@ const updateNameHandler = async (event) => {
     // Collect value from email update field
     const newName = document.querySelector('#name-update').value.trim();
 
-    // Get user's current email so we know which user to update in db
-    const email = document.querySelector('#current-email').innerText;
-
     // Attempt to update the name
     const response = await fetch('/api/users/updateName', {
         method: 'PUT',
-        body: JSON.stringify({ newName, email }),
+        body: JSON.stringify({ newName }),
         headers: { 'Content-Type': 'application/json' },
     });
 
@@ -61,13 +55,10 @@ const updatePasswordHandler = async (event) => {
     // Collect value from email update field
     const newPassword = document.querySelector('#password-update').value.trim();
 
-    // Get user's current email so we know which user to update in db
-    const email = document.querySelector('#current-email').innerText;
-
     // Attempt to update the password
     const response = await fetch('/api/users/updatePassword', {
         method: 'PUT',
-        body: JSON.stringify({ newPassword, email }),
+        body: JSON.stringify({ newPassword }),
         headers: { 'Content-Type': 'application/json' },
     });
 
