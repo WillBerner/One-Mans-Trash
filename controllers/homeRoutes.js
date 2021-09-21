@@ -35,93 +35,6 @@ const mockShelves = [
       },
     ],
   },
-  {
-    category_name: "ELECTRONICS",
-    products: [
-      {
-        description: "Phone",
-        product_name: "free",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-      {
-        description: "Tablet",
-        product_name: "$1",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-      {
-        description: "computer",
-        product_name: "$2",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-      {
-        description: "iPad",
-        product_name: "$3",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-    ],
-  },
-  {
-    category_name: "APPAREL",
-    products: [
-      {
-        description: "underwear",
-        product_name: "free",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-      {
-        description: "shirt",
-        product_name: "$1",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-      {
-        description: "pants",
-        product_name: "$2",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-      {
-        description: "socks",
-        product_name: "$3",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-    ],
-  },
-  {
-    category_name: "HOME",
-    products: [
-      {
-        description: "couch",
-        product_name: "free",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-      {
-        description: "chair",
-        product_name: "$1",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-      {
-        description: "clock",
-        product_name: "$2",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-      {
-        description: "art",
-        product_name: "$3",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-    ],
-  },
 ];
 
 // Homepage route - render homepage.handlebars
@@ -130,22 +43,44 @@ const getAllCategories = async () => {
     include: [{ model: Product, include: [{ model: User }] }],
     
   });
-  const allCategories = categoryData.map((category) => category.get({ plain: true }))
-  return allCategories
+  const allCategories = categoryData.map((category) => category.get({ plain: true }));
+  return allCategories;
 }; 
+
+const getAllProducts = async () => {
+  const productData = await Product.findAll({
+    include: [{ model: Category }],
+  });
+  const allListings = productData.map((listing) => listing.get({ plain: true }));
+  // console.log(allListings);
+  return allListings;
+};
+
+const getProductById = async (productId) => {
+  const product = await (await Product.findByPk(productId)).get({ plain: true })
+  return product;
+};
 
 router.get("/", async (req, res) => {
   console.log("hit home route");
   try {
     const categoryData = await getAllCategories()
+    const productData = await getAllProducts()
+    const shelfData = {
+      category_name: "anything",
+      products: productData
+    }
     
     // Pass serialized session value into homepage template
     res.render("homepage", {
       logged_in: req.session.logged_in,
       // Mock shelves can be removed when the backend feature is ready
-      shelves: mockShelves,
+      shelves: [
+        shelfData
+      ],
       // Mock categories can be removed when the backend feature is ready
-      categories: categoryData
+      categories: categoryData,
+      
     })
   } catch (err) {
     console.log(err);
@@ -197,7 +132,7 @@ router.get("/category/:categoryId", async (req, res) => {
   const categoryData = await getAllCategories()
   // console.log(allCategories);
   const id = req.params.categoryId;
-  console.log(id);
+  // console.log(id);
   res.render("homepage", {
     shelves: [
       {
@@ -264,12 +199,17 @@ router.get("/category/:categoryId", async (req, res) => {
   });
 });
 
-router.get("/listing", async  (req, res) => {
-  const categoryData = await getAllCategories()
-  res.render("productPage", {
+router.get("/listing/:listingId", async  (req, res) => {
+  const categoryData = await getAllCategories();
+  
+  const id = req.params.listingId;
+  const productData = await getProductById(id)
+  const temp = {
 
-    categories: categoryData
-  })
+    categories: categoryData,
+    ...productData
+  }
+  res.render("productPage", temp )
 })
 
 // Export router for use in controllers/index.js
