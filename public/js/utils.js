@@ -2,6 +2,9 @@ function changeZip() {
     let newZip = document.getElementById("myInput").value;
     let oldZipCode = document.getElementById("zipCode");
 
-    oldZipCode.textContent = newZip
+    // Only update if a new zipcode was actually given
+    if (newZip) {
+        oldZipCode.textContent = newZip
+    }
 
 };

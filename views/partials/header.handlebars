@@ -17,12 +17,11 @@
     <nav class="navbar h-90 rounded is-dark mr-5 mt-5 ml-5" role="navigation" aria-label="main navigation">
       <div class="navbar-menu" id="nav-links">
         <div class="navbar-end">
-          <a class="navbar-item"><i class="fas fa-comment fa-2x"></i></a>
-          <a class="navbar-item"><i class="fas fa-user-circle fa-2x"></i></a>
           {{#if logged_in}}
-          <a class="navbar-item" id="logout"><i class="fas fa-sign-out-alt fa-2x"></i></a>
+          <a class="navbar-item" href="../profile" title="Profile"><i class="fas fa-user-circle fa-2x"></i></a>
+          <a class="navbar-item" id="logout" title="Log out"><i class="fas fa-sign-out-alt fa-2x"></i></a>
           {{else}}
-          <a class="navbar-item" href="login"><i class="fas fa-sign-in-alt fa-2x"></i></a>
+          <a class="navbar-item" title="Log in" href="../login"><i class="fas fa-sign-in-alt fa-2x"></i></a>
           {{/if}}
         </div>
       </div>
