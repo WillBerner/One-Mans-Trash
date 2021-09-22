@@ -164,3 +164,7 @@ body {
   position: fixed;
   left: 0;
 }
+
+.user-info {
+  color: #ccc;
+}
