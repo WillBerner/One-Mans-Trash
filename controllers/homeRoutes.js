@@ -5,45 +5,11 @@ const { all } = require(".");
 // Import user model and helper authorization middleware
 const { User, Product, Category } = require("../models");
 const withAuth = require("../utils/auth");
-const mockShelves = [
-  {
-    category_name: "Today's Picks",
-    products: [
-      {
-        description: "whatever",
-        product_name: "free",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-      {
-        description: "soft",
-        product_name: "$1",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-      {
-        description: "car",
-        product_name: "$2",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-      {
-        description: "horse",
-        product_name: "$3",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-    ],
-  },
-];
 
 // Homepage route - render homepage.handlebars
 const getAllCategories = async () => {
   const categoryData = await Category.findAll({
-
     include: [{ model: Product }],
-    
-
   });
   const allCategories = categoryData.map((category) =>
     category.get({ plain: true })
@@ -69,21 +35,36 @@ const getProductById = async (productId) => {
   return product;
 };
 
+const getProductsByCategoryId = async (categoryId) => {
+  const products = await Product.findAll({
+    where: {
+      category_id: categoryId,
+    },
+  });
+  return products.map((product) => product.get({ plain: true }));
+};
+
 router.get("/", async (req, res) => {
   console.log("hit home route");
   try {
     const categoryData = await getAllCategories();
     const productData = await getAllProducts();
-    const shelfData = {
-      category_name: "anything",
-      products: productData,
-    };
+
+    const shelves = categoryData.map((category) => {
+      const shelf = {
+        category_name: category.category_name,
+        products: productData.filter((product) => {
+          return product.category_id === category.id;
+        }),
+      };
+      return shelf;
+    });
 
     // Pass serialized session value into homepage template
     res.render("homepage", {
       logged_in: req.session.logged_in,
       // Mock shelves can be removed when the backend feature is ready
-      shelves: [shelfData],
+      shelves: shelves,
       // Mock categories can be removed when the backend feature is ready
       categories: categoryData,
     });
@@ -127,73 +108,22 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/category/:categoryId", async (req, res) => {
-  const categoryData = await getAllCategories();
-  // console.log(allCategories);
   const id = req.params.categoryId;
-  // console.log(id);
+  const category = await Category.findAll({
+    where: {
+      category_name: id,
+    },
+  });
+  const productData = await getProductsByCategoryId(category[0].id);
+  
   res.render("homepage", {
     shelves: [
       {
-        category_name: id,
-        products: [
-          {
-            description: "whatever",
-            product_name: "free",
-            img_url:
-              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-          },
-          {
-            description: "soft",
-            product_name: "$1",
-            img_url:
-              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-          },
-          {
-            description: "car",
-            product_name: "$2",
-            img_url:
-              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-          },
-          {
-            description: "horse",
-            product_name: "$3",
-            img_url:
-              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-          },
-          {
-            description: "whatever",
-            product_name: "free",
-            img_url:
-              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-          },
-          {
-            description: "soft",
-            product_name: "$1",
-            img_url:
-              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-          },
-          {
-            description: "car",
-            product_name: "$2",
-            img_url:
-              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-          },
-          {
-            description: "horse",
-            product_name: "$3",
-            img_url:
-              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-          },
-          {
-            description: "whatever",
-            product_name: "free",
-            img_url:
-              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-          },
-        ],
+        category_name: category[0].category_name,
+        products: productData,
       },
     ],
-    categories: categoryData,
+    categories: await getAllCategories()
   });
 });
 

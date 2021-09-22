@@ -40,12 +40,16 @@ body {
   height: 170px;
 }
 
-.h-1185 {
-  height: 1185px;
+.h-550 {
+  height: 550px;
 }
 
 .h-35 {
   height: 35px;
+}
+
+.h-43 {
+  height: 43px;
 }
 
 .mb-95 {
@@ -78,6 +82,14 @@ body {
 
 .mt-27 {
   margin-top: 27px;
+}
+
+.mt-220 {
+  margin-top: 220px;
+}
+
+.ml-480 {
+  margin-left: 480px;
 }
 
 .mr-30 {
@@ -124,6 +136,10 @@ body {
   width: 100%;
 }
 
+.w-50 {
+  width: 50%;
+}
+
 .w-fit-content {
   width: fit-content;
 }
@@ -136,4 +152,15 @@ body {
   position: absolute;
   top: -75px;
   left: -22px;
+}
+
+.sticky-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky-sidenav {
+  position: fixed;
+  left: 0;
 }
