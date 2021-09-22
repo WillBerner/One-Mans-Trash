@@ -7,7 +7,7 @@ const productdata = [
         img_url: '/images/Assets/washer.jpg',
         location_zipcode: '27513',
         category_id: 1,
-        user_id: 2,
+        user_id: 1,
     },
     {
         product_name: 'stove top',
@@ -23,7 +23,7 @@ const productdata = [
         img_url: '/images/Assets/couch.jpg',
         location_zipcode: '27604',
         category_id: 2,
-        user_id: 2,
+        user_id: 3,
     },
     {
         product_name: 'Side table',
@@ -31,7 +31,7 @@ const productdata = [
         img_url: '/images/Assets/side-table.jpg',
         location_zipcode: '27604',
         category_id: 2,
-        user_id: 2,
+        user_id: 1,
     },
     {
         product_name: 'Gameboy Color',
@@ -47,7 +47,7 @@ const productdata = [
         img_url: '/images/Assets/old-tv.jpg',
         location_zipcode: '27607',
         category_id: 3,
-        user_id: 2,
+        user_id: 3,
     },
     {
         product_name: 'Rusted Screwdrivers',
@@ -63,7 +63,7 @@ const productdata = [
         img_url: '/images/Assets/axe.jpg',
         location_zipcode: '27616',
         category_id: 4,
-        user_id: 2,
+        user_id: 1,
     },
 
 ];
