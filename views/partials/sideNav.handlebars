@@ -2,8 +2,10 @@
 <div class="filters ml-5">
   <h2 class="filterText b-bot">FILTERS</h2>
   <h2 class="location" id="zipCode">27519</h2>
-  <input class="is-dark rounded border w-full h-35" id="myInput" type="text" placeholder="Enter Zipcode..." />
-  <button onclick="changeZip()">Enter</button>
+  <div class="columns m-auto">
+    <input class="column is-dark rounded border mr-5" id="myInput" type="text" placeholder="Enter Zip" />
+    <button class="column button is-dark rounded py-0 h-43" onclick="changeZip()">Change Zip</button>
+  </div>
 </div>
 
 <div class="has-text-centered">
@@ -11,7 +13,7 @@
     <h2 class="whichCategory is-size-4 b-bot">SHOP BY CATEGORY</h2>
   </div>
 </div>
-<div class="rounded h-1185 ml-5 mt-5 pt-35 bg-grey">
+<div class="rounded h-550 ml-5 mt-5 pt-35 bg-grey">
   {{#each categories}}
   {{> category}}
   {{/each}}

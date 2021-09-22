@@ -5,83 +5,69 @@ const { all } = require(".");
 // Import user model and helper authorization middleware
 const { User, Product, Category } = require("../models");
 const withAuth = require("../utils/auth");
-const mockShelves = [
-  {
-    category_name: "Today's Picks",
-    products: [
-      {
-        description: "whatever",
-        product_name: "free",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-      {
-        description: "soft",
-        product_name: "$1",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-      {
-        description: "car",
-        product_name: "$2",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-      {
-        description: "horse",
-        product_name: "$3",
-        img_url:
-          "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-      },
-    ],
-  },
-];
 
 // Homepage route - render homepage.handlebars
 const getAllCategories = async () => {
   const categoryData = await Category.findAll({
     include: [{ model: Product }],
-    
   });
-  const allCategories = categoryData.map((category) => category.get({ plain: true }));
+  const allCategories = categoryData.map((category) =>
+    category.get({ plain: true })
+  );
   return allCategories;
-}; 
+};
 
 const getAllProducts = async () => {
   const productData = await Product.findAll({
     include: [{ model: Category }],
   });
-  const allListings = productData.map((listing) => listing.get({ plain: true }));
+  const allListings = productData.map((listing) =>
+    listing.get({ plain: true })
+  );
   // console.log(allListings);
   return allListings;
 };
 
 const getProductById = async (productId) => {
-  const product = await (await Product.findByPk(productId)).get({ plain: true })
+  const product = await (
+    await Product.findByPk(productId)
+  ).get({ plain: true });
   return product;
+};
+
+const getProductsByCategoryId = async (categoryId) => {
+  const products = await Product.findAll({
+    where: {
+      category_id: categoryId,
+    },
+  });
+  return products.map((product) => product.get({ plain: true }));
 };
 
 router.get("/", async (req, res) => {
   console.log("hit home route");
   try {
-    const categoryData = await getAllCategories()
-    const productData = await getAllProducts()
-    const shelfData = {
-      category_name: "anything",
-      products: productData
-    }
-    
+    const categoryData = await getAllCategories();
+    const productData = await getAllProducts();
+
+    const shelves = categoryData.map((category) => {
+      const shelf = {
+        category_name: category.category_name,
+        products: productData.filter((product) => {
+          return product.category_id === category.id;
+        }),
+      };
+      return shelf;
+    });
+
     // Pass serialized session value into homepage template
     res.render("homepage", {
       logged_in: req.session.logged_in,
       // Mock shelves can be removed when the backend feature is ready
-      shelves: [
-        shelfData
-      ],
+      shelves: shelves,
       // Mock categories can be removed when the backend feature is ready
       categories: categoryData,
-      
-    })
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -122,88 +108,36 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/category/:categoryId", async (req, res) => {
-  const categoryData = await getAllCategories()
-  // console.log(allCategories);
   const id = req.params.categoryId;
-  // console.log(id);
+  const category = await Category.findAll({
+    where: {
+      category_name: id,
+    },
+  });
+  const productData = await getProductsByCategoryId(category[0].id);
+  
   res.render("homepage", {
     shelves: [
       {
-        category_name: id,
-        products: [
-          {
-            description: "whatever",
-            product_name: "free",
-            img_url:
-              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-          },
-          {
-            description: "soft",
-            product_name: "$1",
-            img_url:
-              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-          },
-          {
-            description: "car",
-            product_name: "$2",
-            img_url:
-              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-          },
-          {
-            description: "horse",
-            product_name: "$3",
-            img_url:
-              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-          },
-          {
-            description: "whatever",
-            product_name: "free",
-            img_url:
-              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-          },
-          {
-            description: "soft",
-            product_name: "$1",
-            img_url:
-              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-          },
-          {
-            description: "car",
-            product_name: "$2",
-            img_url:
-              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-          },
-          {
-            description: "horse",
-            product_name: "$3",
-            img_url:
-              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-          },
-          {
-            description: "whatever",
-            product_name: "free",
-            img_url:
-              "https://embassycleaners.com/wp-content/uploads/2016/05/old-sofa-couch.jpg",
-          },
-        ],
+        category_name: category[0].category_name,
+        products: productData,
       },
     ],
-    categories: categoryData
+    categories: await getAllCategories()
   });
 });
 
-router.get("/listing/:listingId", async  (req, res) => {
+router.get("/listing/:listingId", async (req, res) => {
   const categoryData = await getAllCategories();
-  
-  const id = req.params.listingId;
-  const productData = await getProductById(id)
-  const temp = {
 
+  const id = req.params.listingId;
+  const productData = await getProductById(id);
+  const temp = {
     categories: categoryData,
-    ...productData
-  }
-  res.render("productPage", temp )
-})
+    ...productData,
+  };
+  res.render("productPage", temp);
+});
 
 // Export router for use in controllers/index.js
 module.exports = router;

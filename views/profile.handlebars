@@ -2,26 +2,28 @@
 
 <div class="columns">
   <div class="column">
-    <h2 class="title is-1 has-text-centered">Welcome, {{name}}!</h2>
+    <h2 class="title is-1 has-text-centered pt-6">Welcome, {{name}}!</h2>
   <div class="columns">
-    
-    <div class="column  is-narrow">
 
-      <figure class="image is-128x128">
+    <div class="column"></div>
+    
+    <div class="column  is-narrow mt-6 ml-6 box has-background-dark">
+
+      <figure class="image is-128x128 mb-4">
         <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
       </figure>
 
       <h5>Update profile information</h5>
 
-      <form class="form update-email-form">
+      <form class="form update-email-form mb-5">
         <div class="form-group">
-          <label for="email-update" class="label">Email: (currently <span id="current-email">{{email}}</span>)</label>
-          <input class="form-input input" type="text" id="email-update" />
+          <label for="email-update" class="label pb-2">Email: (currently <span id="current-email">{{email}}</span>)</label>
+          <input class="form-input input pb-2" type="text" id="email-update" />
           <button class="button is-primary" type="submit">Update email</button>
         </div>
       </form>
 
-      <form class="form update-name-form">
+      <form class="form update-name-form mb-5">
         <div class="form-group">
           <label for="name-update" class="label">Name:</label>
           <input class="form-input input" type="text" id="name-update" />
@@ -38,7 +40,9 @@
       </form>
 
     </div>
-    <div class="column">
+    <div class="column is-narrow mt-6 ml-6 box has-background-dark">
+      <div class="columns">
+        <div class="column">
       <h3>Your items</h3>
 
       <p>(User's posted items here maybe?)</p>
@@ -47,13 +51,15 @@
       {{!-- Button to create a new product from user's profile page, for testing purposes --}}
       <form class="form create-product">
         <div class="form-group">
-          <label for="product-info">Post a new product</label>
-          <input class="form-input" type="text" id="product-info" />
-          <button class="btn btn-primary" type="submit">Create</button>
+          <label for="product-info" class="label">Post a new product</label>
+          <input class="form-input input" type="text" id="product-info" />
+          <button class="button is-primary" type="submit">Create</button>
         </div>
       </form>
-
+        </div>
+      </div>
     </div>
+    <div class="column"></div>
 
   </div>
   </div>
