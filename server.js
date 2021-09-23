@@ -1,8 +1,11 @@
 // Import npm dependencies
+require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
+const fileupload = require('express-fileupload');
+const cors = require('cors');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // Import our routes and and helper functions
@@ -38,6 +41,12 @@ const sess = {
 
 // Use session middleware for authentication and authorization
 app.use(session(sess));
+
+app.use(fileupload({
+  createParentPath: true
+}));
+
+app.use(cors());
 
 // Inform Express.js on which template engine to use
 app.engine('handlebars', hbs.engine);

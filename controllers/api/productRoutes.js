@@ -1,5 +1,10 @@
 // Boilerplate router creation
 const router = require('express').Router();
+const {multerUploads, datauri } = require('../../config/multer');
+const cloudinary = require('../../config/cloudinary');
+
+
+
 
 // Importing models
 const { Product, Category, User } = require('../../models');
@@ -43,6 +48,51 @@ router.post('/', withAuth, async (req, res) => {
         res.status(500).json(error);
     }
 });
+
+router.post('/upload-fileUpload/:product_id', multerUploads.single('fileupload'), async (req, res) => {
+    const file = datauri(req);
+    cloudinary.uploader.upload(file.content,
+        {dpr: "auto", responsive: true, width: "auto", crop: "scale" },
+        (error, result) => {
+            console.log(result)
+            // console.log(req.session.user_id)
+            // db.User.update({user_image: result.secure_url}, {where:{id:req.session.user_id}}) //maybe should be req.session.user_id
+            // .then(post => {
+            //     console.log(post)
+            //     res.status(200).json({result})
+            // })
+            // .catch(error => {
+            //     res.status(500).json({message: "Error"})
+            // })
+        }
+        )
+    // try{
+    //     if(!req.files) {
+    //         res.send({
+    //             status: false,
+    //             message: 'No file uploaded'
+    //         });
+    //     } else {
+    //         let fileUpload = req.files.fileUpload;
+
+    //         fileUpload.mv('./uploads/' + fileUpload.name);
+
+    //         res.send({
+    //             status: true,
+    //             message: 'File is uploaded',
+    //             data: {
+    //                 name: fileUpload.name,
+    //                 mimetype: fileUpload.mimetype,
+    //                 size: fileUpload.size,
+    //                 base64: fileUpload.base64EncodedImage
+    //             }
+    //         });
+    //     }
+    // } catch (err) {
+    //     res.status(500).send(err);
+    // }
+
+})
 
 
 router.get('/', async (req, res) => {

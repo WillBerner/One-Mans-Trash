@@ -1,7 +1,7 @@
 // Import necessary npm dependencies
 const Sequelize = require('sequelize');
 // const mysql = require('mysql2');
-require('dotenv').config();
+
 
 // Declare sequelize variable in global scope to export
 let sequelize;
@@ -25,6 +25,8 @@ if (process.env.JAWSDB_URL) {
     }
   );
 }
+
+
 
 // Export sequelize connection
 module.exports = sequelize;
