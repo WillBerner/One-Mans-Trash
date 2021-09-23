@@ -49,7 +49,7 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
-router.post('/upload-fileUpload/:product_id', multerUploads.single('fileupload'), async (req, res) => {
+router.post('/upload-fileUpload', multerUploads.single('fileupload'), async (req, res) => {
     const file = datauri(req);
     cloudinary.uploader.upload(file.content,
         {dpr: "auto", responsive: true, width: "auto", crop: "scale" },
