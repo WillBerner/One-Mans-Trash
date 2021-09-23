@@ -7,21 +7,16 @@ const createProductHandler = async (event) => {
     let location_zipcode = document.getElementById('product-zipcode').value;
     let category_name = document.getElementById('categories').value;
 
-    const input = document.getElementById('fileUpload')
-
-    input.addEventListener('change', () => {
-        uploadFile(input.files[0]);
-    });
-
+    let fileStr = await uploadFile(input.files[0]);
     // Dummy project data for testing/development
     let product = {
         "product_name": product_name,
         "description": description,
-        "img_url": "url",
+        "img_url": fileStr,
         "location_zipcode": location_zipcode,
         "category_name": category_name,
     }
-
+    
     // Attempt to create the new product
     const response = await fetch('/api/products/', {
         method: 'POST',
@@ -35,6 +30,8 @@ const createProductHandler = async (event) => {
     } else {
         alert(response.statusText);
     }
+    
+    console.log(fileStr);
 
 }
 
@@ -45,20 +42,21 @@ input.addEventListener('change', () => {
     uploadFile(input.files[0]);
 });
 
-const uploadFile = (file) => {
-    console.log(file);
+const uploadFile = async (file) => {
+    // console.log(file);
 
     const fd = new FormData();
     fd.append('fileupload', file);
 
-    fetch('api/products/upload-fileUpload', {
+    let imageUpload = await fetch('api/products/upload-fileUpload', {
         method: 'POST',
         body: fd
     })
     .then(res => res.json())
-    .then(json => console.log(json))
+    .then(json => json)
     .catch(err => console.error(err));
-    console.log(fd);
+    return imageUpload;
+    // console.log(fd);
 }
 
 
