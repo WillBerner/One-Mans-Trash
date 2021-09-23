@@ -7,8 +7,11 @@ const createProductHandler = async (event) => {
     let location_zipcode = document.getElementById('product-zipcode').value;
     let category_name = document.getElementById('categories').value;
 
-    
-    
+    const input = document.getElementById('fileUpload')
+
+    input.addEventListener('change', () => {
+        uploadFile(input.files[0]);
+    });
 
     // Dummy project data for testing/development
     let product = {
@@ -34,6 +37,30 @@ const createProductHandler = async (event) => {
     }
 
 }
+
+
+const input = document.getElementById('fileUpload')
+
+input.addEventListener('change', () => {
+    uploadFile(input.files[0]);
+});
+
+const uploadFile = (file) => {
+    console.log(file);
+
+    const fd = new FormData();
+    fd.append('fileupload', file);
+
+    fetch('api/products/upload-fileUpload', {
+        method: 'POST',
+        body: fd
+    })
+    .then(res => res.json())
+    .then(json => console.log(json))
+    .catch(err => console.error(err));
+    console.log(fd);
+}
+
 
 // Add click handler to the create button
 document.querySelector('.create-product').addEventListener('submit', createProductHandler);
