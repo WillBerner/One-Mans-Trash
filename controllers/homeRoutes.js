@@ -30,7 +30,22 @@ const getAllProducts = async () => {
 
 const getProductById = async (productId) => {
   const product = await (
-    await Product.findByPk(productId)
+    await Product.findByPk(productId, {
+      include: [
+        {
+          model: Category
+        },
+        {
+          model: User,
+          attributes: {
+            exclude: ['password']
+          }
+        }
+      ],
+      attributes: {
+        exclude: ['user_id', 'category_id']
+      }
+    })
   ).get({ plain: true });
   return product;
 };
@@ -131,6 +146,8 @@ router.get("/listing/:listingId", async (req, res) => {
   const categoryData = await getAllCategories();
   const id = req.params.listingId;
   const productData = await getProductById(id);
+
+  console.log(productData);
   const temp = {
     categories: categoryData,
     ...productData,

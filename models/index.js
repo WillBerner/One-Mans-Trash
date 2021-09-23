@@ -11,12 +11,11 @@ Product.belongsTo(Category, {
 });
 
 User.hasMany(Product, {
-  foreignKey: 'product_id',
+  foreignKey: 'user_id',
 });
 
 Product.belongsTo(User, {
-  foreignKey: 'product_id',
+  foreignKey: 'user_id',
 });
 
 module.exports = { User, Category, Product };
-
