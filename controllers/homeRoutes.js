@@ -129,7 +129,6 @@ router.get("/category/:categoryId", async (req, res) => {
 
 router.get("/listing/:listingId", async (req, res) => {
   const categoryData = await getAllCategories();
-
   const id = req.params.listingId;
   const productData = await getProductById(id);
   const temp = {
@@ -138,6 +137,11 @@ router.get("/listing/:listingId", async (req, res) => {
   };
   res.render("productPage", temp);
 });
+
+
+router.get("/new-post", async (req, res) => {
+  res.render("productCreate")
+})
 
 // Export router for use in controllers/index.js
 module.exports = router;
