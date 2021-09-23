@@ -144,7 +144,8 @@ router.get("/category/:categoryId", async (req, res) => {
         products: productData,
       },
     ],
-    categories: await getAllCategories()
+    categories: await getAllCategories(),
+    logged_in: req.session.logged_in,
   });
 });
 
@@ -157,6 +158,7 @@ router.get("/listing/:listingId", async (req, res) => {
   const temp = {
     categories: categoryData,
     ...productData,
+    logged_in: req.session.logged_in,
   };
   res.render("productPage", temp);
 });
