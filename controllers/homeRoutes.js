@@ -109,6 +109,7 @@ router.get("/profile", withAuth, async (req, res) => {
     res.render("profile", {
       ...user,
       logged_in: true,
+      categories: await getAllCategories()
     });
   } catch (err) {
     res.status(500).json(err);
@@ -160,12 +161,15 @@ router.get("/listing/:listingId", async (req, res) => {
   res.render("productPage", temp);
 });
 
+
 // Render new post page only if user is logged in (withAuth middleware)
 router.get("/new-post", withAuth, async (req, res) => {
   res.render("productCreate", {
     logged_in: req.session.logged_in,
+    categories: await getAllCategories()
   });
 })
+
 
 // Export router for use in controllers/index.js
 module.exports = router;
