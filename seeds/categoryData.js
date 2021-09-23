@@ -13,6 +13,18 @@ const categorydata = [
     {
         category_name: 'Tools',
     },
+    {
+        category_name: 'Home',
+    },
+    {
+        category_name: 'Gaming',
+    },
+    {
+        category_name: 'Outdoor',
+    },
+    {
+        category_name: 'Apparel',
+    }
 ];
 
 const seedCategory = () => Category.bulkCreate(categorydata);
