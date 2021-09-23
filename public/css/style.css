@@ -52,6 +52,10 @@ body {
   height: 855px;
 }
 
+.h-730 {
+  height: 730px;
+}
+
 .h-35 {
   height: 35px;
 }
@@ -96,8 +100,16 @@ body {
   margin-top: 55px;
 }
 
+.ml-20 {
+  margin-left: 20px;
+}
+
 .mt-27 {
   margin-top: 27px;
+}
+
+.mt-33 {
+  margin-top: 33px;
 }
 
 .mt-220 {
@@ -112,8 +124,8 @@ body {
   margin-right: 30px;
 }
 
-.mr-70 {
-  margin-right: 70px;
+.mr-60 {
+  margin-right: 60px;
 }
 
 .mb-105:not(:first-child) {
@@ -152,6 +164,10 @@ body {
 
 .pt-35:not(:first-child) {
   padding-top: 35px;
+}
+
+.pt-20 {
+  padding-top: 20px;
 }
 
 .rounded {
