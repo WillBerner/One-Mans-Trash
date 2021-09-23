@@ -104,6 +104,7 @@ router.get("/profile", withAuth, async (req, res) => {
     res.render("profile", {
       ...user,
       logged_in: true,
+      categories: await getAllCategories()
     });
   } catch (err) {
     res.status(500).json(err);
@@ -157,8 +158,11 @@ router.get("/listing/:listingId", async (req, res) => {
 
 
 router.get("/new-post", async (req, res) => {
-  res.render("productCreate")
+  res.render("productCreate", {
+    categories: await getAllCategories()
+  })
 })
+
 
 // Export router for use in controllers/index.js
 module.exports = router;
