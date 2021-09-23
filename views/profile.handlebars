@@ -1,45 +1,12 @@
 {{!-- Template for a specific user's profile page --}}
+{{> header}}
 
-<div class="columns">
-  <div class="column">
-    <h2 class="title is-1 has-text-centered pt-6">Welcome, {{name}}!</h2>
+<div class="field mt-220">
   <div class="columns">
-
-    <div class="column"></div>
-    
-    <div class="column  is-narrow mt-6 ml-6 box has-background-dark">
-
-      <figure class="image is-128x128 mb-4">
-        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-      </figure>
-
-      <h5 class="user-info">Update profile information</h5>
-
-      <form class="form update-email-form mb-5">
-        <div class="form-group">
-          <label for="email-update" class="label pb-2 user-info">Email: (currently <span id="current-email">{{email}}</span>)</label>
-          <input class="form-input input pb-2" type="text" placeholder="New Email" id="email-update" />
-          <button class="button is-primary mt-3" type="submit">Update email</button>
-        </div>
-      </form>
-
-      <form class="form update-name-form mb-5">
-        <div class="form-group">
-          <label for="name-update" class="label user-info">Name:</label>
-          <input class="form-input input" type="text" placeholder="New Name" id="name-update" />
-          <button class="button is-primary mt-3" type="submit">Update name</button>
-        </div>
-      </form>
-
-      <form class="form update-password-form">
-        <div class="form-group">
-          <label for="password-update" class="label user-info">Password:</label>
-          <input class="form-input input" type="text" placeholder="New Password" id="password-update" />
-          <button class="button is-primary mt-3" type="submit">Update password</button>
-        </div>
-      </form>
-
+    <div class="column is-3 relative sticky-sidenav">
+      {{> sideNav}}
     </div>
+<<<<<<< HEAD
     <div class="column mt-6 ml-6 box has-background-dark">
       <div class="columns">
         <div class="column">
@@ -87,8 +54,8 @@
     <div class="column"></div>
 
   </div>
+=======
+    {{> profileContent}}
+>>>>>>> 9bb5626e88959b4e10f7d418a5ed51769e97ffa8
   </div>
 </div>
-
-<script src="./js/updateInfo.js"></script>
-<script src="./js/createProduct.js"></script>

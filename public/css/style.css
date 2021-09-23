@@ -40,8 +40,16 @@ body {
   height: 170px;
 }
 
+.h-300 {
+  height: 300px;
+}
+
 .h-550 {
   height: 550px;
+}
+
+.h-855 {
+  height: 855px;
 }
 
 .h-35 {
@@ -76,8 +84,16 @@ body {
   margin-top: -7rem;
 }
 
+.mt-8r {
+  margin-top: -8rem;
+}
+
 .mt-35 {
   margin-top: 35px;
+}
+
+.mt-55 {
+  margin-top: 55px;
 }
 
 .mt-27 {
@@ -100,12 +116,30 @@ body {
   margin-top: 105px;
 }
 
+.mb-24 {
+  margin-bottom: 24px;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
+}
+
 .ml-2r {
   margin-left: 2rem;
 }
 
 .ml-55 {
   margin-left: 55px;
+}
+
+.mlr-200 {
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.mlr-227-200 {
+  margin-left: -227px;
+  margin-right: -200px;
 }
 
 .pt-35:not(:first-child) {

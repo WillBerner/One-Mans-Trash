@@ -30,7 +30,22 @@ const getAllProducts = async () => {
 
 const getProductById = async (productId) => {
   const product = await (
-    await Product.findByPk(productId)
+    await Product.findByPk(productId, {
+      include: [
+        {
+          model: Category
+        },
+        {
+          model: User,
+          attributes: {
+            exclude: ['password']
+          }
+        }
+      ],
+      attributes: {
+        exclude: ['user_id', 'category_id']
+      }
+    })
   ).get({ plain: true });
   return product;
 };
@@ -80,6 +95,11 @@ router.get("/profile", withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ["password"] },
+      include: [
+        {
+          model: Product
+        }
+      ]
     });
 
     // Extract useful information from data
@@ -89,6 +109,7 @@ router.get("/profile", withAuth, async (req, res) => {
     res.render("profile", {
       ...user,
       logged_in: true,
+      categories: await getAllCategories()
     });
   } catch (err) {
     res.status(500).json(err);
@@ -129,15 +150,26 @@ router.get("/category/:categoryId", async (req, res) => {
 
 router.get("/listing/:listingId", async (req, res) => {
   const categoryData = await getAllCategories();
-
   const id = req.params.listingId;
   const productData = await getProductById(id);
+
+  console.log(productData);
   const temp = {
     categories: categoryData,
     ...productData,
   };
   res.render("productPage", temp);
 });
+
+
+// Render new post page only if user is logged in (withAuth middleware)
+router.get("/new-post", withAuth, async (req, res) => {
+  res.render("productCreate", {
+    logged_in: req.session.logged_in,
+    categories: await getAllCategories()
+  });
+})
+
 
 // Export router for use in controllers/index.js
 module.exports = router;

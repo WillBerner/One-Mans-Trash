@@ -1,0 +1,83 @@
+<div class="column ml-480">
+    <div class="mt-7r">
+        <div class="columns">
+            <div class="column">
+
+                <h2 class="title is-1 has-text-centered pt-6">Hello, {{name}}!</h2>
+                
+                <div class="columns">
+                    <div class="column"></div>
+                    <div class="column mt-6 ml-6 box rounded has-background-dark">
+                        <figure class="image is-128x128 mb-4 mx-auto">
+                            <img class="is-rounded"
+                                src="https://www.mobafire.com/images/avatars/summoner-icon-harrowing-burning-hunger-brand.png">
+                        </figure>
+                        <label for="email-update" class="label p-auto user-info has-text-centered">Email:<span
+                                id="current-email"> {{email}}</span></label>
+
+                        <form class="form update-email-form mb-5">
+                            <div class="form-group">
+                                <div class="">
+                                    <h5 class="user-info is-size-3 has-text-centered">Update Profile</h5>
+                                </div>
+                                <input class="form-input input pb-2" type="text" placeholder="New Email"
+                                    id="email-update" />
+                                <button class="button is-primary mt-3" type="submit">Update</button>
+                            </div>
+                        </form>
+
+                        <form class="form update-name-form mb-5">
+                            <div class="form-group">
+                                <label for="name-update" class="label user-info">Name:</label>
+                                <input class="form-input input" type="text" placeholder="New Name" id="name-update" />
+                                <button class="button is-primary mt-3" type="submit">Update</button>
+                            </div>
+                        </form>
+
+                        <form class="form update-password-form">
+                            <div class="form-group">
+                                <label for="password-update" class="label user-info">Password:</label>
+                                <input class="form-input input" type="text" placeholder="New Password"
+                                    id="password-update" />
+                                <button class="button is-primary mt-3" type="submit">Update</button>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="column mt-6 ml-6 box rounded has-background-dark">
+                        <div class="columns">
+                            <div class="column">
+                                <div class="">
+                                    <h3 class="user-info is-size-3 has-text-centered b-bot">Your items</h3>
+
+                                    {{!-- Update to make look better --}}
+                                    <div class="">
+                                        {{#each products}}
+                                        <div class="card">
+                                            <div class="card-image">
+                                                <figure class="image is-4by5">
+                                                    <a class="" href="/listing/{{id}}">
+                                                        <img src="{{img_url}}" alt="{{img_url}}" />
+                                                    </a>
+                                                </figure>
+                                            </div>
+                                        </div>
+                                        <h3>{{product_name}}</h3>
+                                        <h6>{{description}}</h6>
+                                        {{/each}}
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column"></div>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="./js/updateInfo.js"></script>
+        <script src="./js/createProduct.js"></script>
+    </div>
+</div>

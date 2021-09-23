@@ -8,9 +8,8 @@ const fileupload = require('express-fileupload');
 const cors = require('cors');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-// Import our routes and and helper functions
+// Import our routes
 const routes = require('./controllers');
-const helpers = require('./utils/helpers');
 
 // Import sequelize database connection
 const sequelize = require('./config/connection');
@@ -19,8 +18,8 @@ const sequelize = require('./config/connection');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Set up Handlebars.js engine with custom helpers
-const hbs = exphbs.create({ helpers });
+// Set up Handlebars.js engine
+const hbs = exphbs.create();
 
 // Create session options
 const sess = {
