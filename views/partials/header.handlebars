@@ -17,12 +17,12 @@
     <nav class="has-background-dark h-90 rounded level-right mr-5 mt-5 ml-5 is-mobile" role="navigation" aria-label="main navigation">
       <div class="" id="nav-links">
         <div class="is-mobile level mr-5">
-          <a class="level-item navbar-item has-text-white has-background-dark" href="../new-post"><i class="fas fa-plus fa-2x"></i></a>
-          <a class="level-item navbar-item has-text-white has-background-dark" href="../profile"><i class="fas fa-user-circle fa-2x"></i></a>
           {{#if logged_in}}
-          <a class="level-item navbar-item has-text-white has-background-dark" id="logout"><i class="fas fa-sign-out-alt fa-2x"></i></a>
+          <a class="level-item navbar-item has-text-white has-background-dark" title="Log out" id="logout"><i class="fas fa-sign-out-alt fa-2x"></i></a>
+          <a class="level-item navbar-item has-text-white has-background-dark" title="Profile" href="../profile"><i class="fas fa-user-circle fa-2x"></i></a>
+          <a class="level-item navbar-item has-text-white has-background-dark" title="Create new post" href="../new-post"><i class="fas fa-plus fa-2x"></i></a>
           {{else}}
-          <a class="level-item navbar-item has-text-white has-background-dark" href="../login"><i class="fas fa-sign-in-alt fa-2x"></i></a>
+          <a class="level-item navbar-item has-text-white has-background-dark" title="Log in" href="../login"><i class="fas fa-sign-in-alt fa-2x"></i></a>
           {{/if}}
         </div>
       </div>
