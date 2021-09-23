@@ -112,6 +112,10 @@ body {
   margin-right: 30px;
 }
 
+.mr-70 {
+  margin-right: 70px;
+}
+
 .mb-105:not(:first-child) {
   margin-top: 105px;
 }
@@ -122,6 +126,10 @@ body {
 
 .mb-40 {
   margin-bottom: 40px;
+}
+
+.mb-1913 {
+  margin-bottom: 1913px;
 }
 
 .ml-2r {

@@ -1,4 +1,5 @@
 // Import necessary npm dependencies
+require('dotenv').config();
 const Sequelize = require('sequelize');
 // const mysql = require('mysql2');
 

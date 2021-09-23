@@ -4,10 +4,9 @@
             <div class="column">
 
                 <h2 class="title is-1 has-text-centered pt-6">Hello, {{name}}!</h2>
-                
+
                 <div class="columns">
-                    <div class="column"></div>
-                    <div class="column mt-6 ml-6 box rounded has-background-dark">
+                    <div class="column mt-6 ml-6 box rounded has-background-black-ter">
                         <figure class="image is-128x128 mb-4 mx-auto">
                             <img class="is-rounded"
                                 src="https://www.mobafire.com/images/avatars/summoner-icon-harrowing-burning-hunger-brand.png">
@@ -15,7 +14,7 @@
                         <label for="email-update" class="label p-auto user-info has-text-centered">Email:<span
                                 id="current-email"> {{email}}</span></label>
 
-                        <form class="form update-email-form mb-5">
+                        <form class="form update-email-form mb-5 mx-5">
                             <div class="form-group">
                                 <div class="">
                                     <h5 class="user-info is-size-3 has-text-centered">Update Profile</h5>
@@ -26,7 +25,7 @@
                             </div>
                         </form>
 
-                        <form class="form update-name-form mb-5">
+                        <form class="form update-name-form mb-5 mx-5">
                             <div class="form-group">
                                 <label for="name-update" class="label user-info">Name:</label>
                                 <input class="form-input input" type="text" placeholder="New Name" id="name-update" />
@@ -34,7 +33,7 @@
                             </div>
                         </form>
 
-                        <form class="form update-password-form">
+                        <form class="form update-password-form mx-5">
                             <div class="form-group">
                                 <label for="password-update" class="label user-info">Password:</label>
                                 <input class="form-input input" type="text" placeholder="New Password"
@@ -44,7 +43,7 @@
                         </form>
 
                     </div>
-                    <div class="column mt-6 ml-6 box rounded has-background-dark">
+                    <div class="column mt-6 ml-6 mb-5 box rounded has-background-black-ter mr-70">
                         <div class="columns">
                             <div class="column">
                                 <div class="">
@@ -62,21 +61,20 @@
                                                 </figure>
                                             </div>
                                         </div>
-                                        <h3>{{product_name}}</h3>
-                                        <h6>{{description}}</h6>
+                                        <h3 class="has-text-white">{{product_name}}
+                                            <br>
+                                            {{description}}
+                                        </h3>
                                         {{/each}}
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="column"></div>
-
                 </div>
             </div>
         </div>
-
         <script src="./js/updateInfo.js"></script>
         <script src="./js/createProduct.js"></script>
     </div>
