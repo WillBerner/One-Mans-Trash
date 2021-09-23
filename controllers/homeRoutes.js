@@ -95,6 +95,11 @@ router.get("/profile", withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ["password"] },
+      include: [
+        {
+          model: Product
+        }
+      ]
     });
 
     // Extract useful information from data
@@ -157,10 +162,12 @@ router.get("/listing/:listingId", async (req, res) => {
 });
 
 
-router.get("/new-post", async (req, res) => {
+// Render new post page only if user is logged in (withAuth middleware)
+router.get("/new-post", withAuth, async (req, res) => {
   res.render("productCreate", {
+    logged_in: req.session.logged_in,
     categories: await getAllCategories()
-  })
+  });
 })
 
 
