@@ -48,8 +48,8 @@ body {
   height: 550px;
 }
 
-.h-855 {
-  height: 855px;
+.h-823 {
+  height: 823px;
 }
 
 .h-730 {
@@ -88,6 +88,10 @@ body {
   margin-top: -7rem;
 }
 
+.mt-5r {
+  margin-top: -5rem;
+}
+
 .mt-8r {
   margin-top: -8rem;
 }
@@ -99,6 +103,7 @@ body {
 .mt-55 {
   margin-top: 55px;
 }
+
 
 .ml-20 {
   margin-left: 20px;
@@ -126,6 +131,11 @@ body {
 
 .mr-60 {
   margin-right: 60px;
+}
+
+.mlr-60-10 {
+  margin-right: 60px;
+  margin-left: 10px;
 }
 
 .mb-105:not(:first-child) {
