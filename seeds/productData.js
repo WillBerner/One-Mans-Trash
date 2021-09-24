@@ -91,7 +91,7 @@ const productdata = [
     },
     {
         product_name: 'Portable DVD player',
-        description: 'Bought this portable dvd player for my grandson for christmas last year, but never uses it and I dont know why. First come first serve.',
+        description: 'Bought this portable dvd player for my grandson for Christmas last year, but never uses it and I dont know why. First come first serve.',
         img_url: 'https://u-mercari-images.mercdn.net/photos/m98210249719_1.jpg?1612654033',
         location_zipcode: '27607',
         category_id: 3,
@@ -123,7 +123,7 @@ const productdata = [
     },
     {
         product_name: 'Spare universal remote',
-        description: 'I have a spare universal remote that I want to get rid of since buying my new TV.',
+        description: 'I have a spare universal remote that I want to get rid of since I bought a new TV which came with a new remote.',
         img_url: 'https://www.lg.com/us/images/tv-audio-video-accessories/md05893656/gallery/1100-1.jpg',
         location_zipcode: '27510',
         category_id: 3,
@@ -131,11 +131,43 @@ const productdata = [
     },
     {
         product_name: 'Power Drills',
-        description: 'Dont need these old drills anymore. If they arent gone in 1 week then Im just gonna toss em.',
+        description: "Don't need these old drills anymore. If they aren't gone in 1 week then I'm just gonna toss 'em.",
         img_url: 'https://content.instructables.com/ORIG/F8M/248F/IRHV5S0F/F8M248FIRHV5S0F.jpg?auto=webp&fit=bounds&frame=1&height=1024&width=1024',
         location_zipcode: '27516',
         category_id: 4,
         user_id: 3,
+    },
+    {
+        product_name: 'Extension Cord',
+        description: "I have an old extension cord that I just don't use much anymore. Still works just fine, but a bit of grime still on it.",
+        img_url: 'https://www.lumberking.com/Data/694x463oldextensioncord.jpg?Revision=s23m&Timestamp=zXzH8G',
+        location_zipcode: '27519',
+        category_id: 3,
+        user_id: 4,
+    },
+    {
+        product_name: 'Pink lamp',
+        description: "This lamp just doesn't fit my decor anymore so I'd like to give it to someone who'll appreciate it. Works fine!",
+        img_url: 'https://pyxis.nymag.com/v1/imgs/ed9/88a/6e1649f13c89ae27e1f114ce30ba97cbeb-etsy-lamp.2x.rsocial.w600.jpg',
+        location_zipcode: '27610',
+        category_id: 5,
+        user_id: 5,
+    },
+    {
+        product_name: 'Measuring spoons',
+        description: "A set of some basic measuring spoons. None missing - see pic.",
+        img_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ4XTaqMTRw2YB4v2DZIbTuh45PlHc3amfIQ&usqp=CAU',
+        location_zipcode: '27616',
+        category_id: 5,
+        user_id: 6,
+    },
+    {
+        product_name: 'Dog bowls',
+        description: "A pair of dog bowls for food and water. Our little best friend is off to greener fields now 😢 but we'd love for someone else to be able to make use of them.",
+        img_url: 'https://www.rover.com/blog/wp-content/uploads/2021/04/bowls-3474823_1280-e1619716798509-960x540.jpg',
+        location_zipcode: '27512',
+        category_id: 5,
+        user_id: 7,
     },
 
 ];
