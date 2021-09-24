@@ -10,7 +10,7 @@ const productdata = [
         user_id: 1,
     },
     {
-        product_name: 'stove top',
+        product_name: 'Stove top',
         description: 'Used stove top. In working condition, no longer have need for it.',
         img_url: '/images/Assets/stove-top.jpg',
         location_zipcode: '27607',
@@ -23,7 +23,7 @@ const productdata = [
         img_url: 'https://cd5a26cb38e2f692acf4-1755b9e4a9778d68267568d15a55e9ec.ssl.cf2.rackcdn.com/5539bca8f3/55-1.jpg',
         location_zipcode: '27523',
         category_id: 1,
-        user_id: 1,
+        user_id: 3,
     },
     {
         product_name: 'Radiators',
@@ -31,7 +31,7 @@ const productdata = [
         img_url: 'https://cdn.vox-cdn.com/thumbor/MogVo8k0wfOlSjlejnm-bnQuB-o=/0x0:1899x918/1200x800/filters:focal(798x308:1100x610)/cdn.vox-cdn.com/uploads/chorus_image/image/65889550/vintage_radiators_x_banner.0.jpg',
         location_zipcode: '27607',
         category_id: 1,
-        user_id: 2,
+        user_id: 4,
     },
     {
         product_name: 'Couch',
@@ -39,7 +39,7 @@ const productdata = [
         img_url: '/images/Assets/couch.jpg',
         location_zipcode: '27604',
         category_id: 2,
-        user_id: 3,
+        user_id: 5,
     },
     {
         product_name: 'Side table',
@@ -47,7 +47,7 @@ const productdata = [
         img_url: '/images/Assets/side-table.jpg',
         location_zipcode: '27604',
         category_id: 2,
-        user_id: 1,
+        user_id: 6,
     },
     {
         product_name: 'Old chairs',
@@ -55,7 +55,7 @@ const productdata = [
         img_url: 'https://wisebread-killeracesmedia.netdna-ssl.com/files/fruganomics/imagecache/605x340/blog-images/chairs-5252078-small.jpg',
         location_zipcode: '27877',
         category_id: 2,
-        user_id: 3,
+        user_id: 7,
     },
     {
         product_name: 'Gaming Chair',
@@ -87,7 +87,7 @@ const productdata = [
         img_url: 'https://www.realgear.net/wp-content/uploads/2017/08/retro-gaming-consoles-scaled.jpg',
         location_zipcode: '27223',
         category_id: 6,
-        user_id: 2,
+        user_id: 4,
     },
     {
         product_name: 'Portable DVD player',
@@ -95,7 +95,7 @@ const productdata = [
         img_url: 'https://u-mercari-images.mercdn.net/photos/m98210249719_1.jpg?1612654033',
         location_zipcode: '27607',
         category_id: 3,
-        user_id: 3,
+        user_id: 5,
     },
     {
         product_name: 'Rusted Screwdrivers',
@@ -103,7 +103,7 @@ const productdata = [
         img_url: 'https://i.ytimg.com/vi/xNukg6c93vg/maxresdefault.jpg',
         location_zipcode: '27560',
         category_id: 4,
-        user_id: 2,
+        user_id: 6,
     },
     {
         product_name: 'Axe',
@@ -111,7 +111,7 @@ const productdata = [
         img_url: '/images/Assets/axe.jpg',
         location_zipcode: '27616',
         category_id: 4,
-        user_id: 1,
+        user_id: 7,
     },
     {
         product_name: 'Old Power Saw',
@@ -119,15 +119,23 @@ const productdata = [
         img_url: 'https://diy.sndimg.com/content/dam/images/diy/fullset/2011/8/12/0/Original_Old-Circular-Saw_s4x3.jpg.rend.hgtvcom.1280.960.suffix/1420874850655.jpeg',
         location_zipcode: '27560',
         category_id: 4,
+        user_id: 1,
+    },
+    {
+        product_name: 'Spare universal remote',
+        description: 'I have a spare universal remote that I want to get rid of since buying my new TV.',
+        img_url: 'https://www.lg.com/us/images/tv-audio-video-accessories/md05893656/gallery/1100-1.jpg',
+        location_zipcode: '27510',
+        category_id: 3,
         user_id: 2,
     },
     {
         product_name: 'Power Drills',
         description: 'Dont need these old drills anymore. If they arent gone in 1 week then Im just gonna toss em.',
         img_url: 'https://content.instructables.com/ORIG/F8M/248F/IRHV5S0F/F8M248FIRHV5S0F.jpg?auto=webp&fit=bounds&frame=1&height=1024&width=1024',
-        location_zipcode: '27616',
+        location_zipcode: '27516',
         category_id: 4,
-        user_id: 1,
+        user_id: 3,
     },
 
 ];

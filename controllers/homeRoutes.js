@@ -154,7 +154,6 @@ router.get("/listing/:listingId", async (req, res) => {
   const id = req.params.listingId;
   const productData = await getProductById(id);
 
-  console.log(productData);
   const temp = {
     categories: categoryData,
     ...productData,
@@ -162,7 +161,6 @@ router.get("/listing/:listingId", async (req, res) => {
   };
   res.render("productPage", temp);
 });
-
 
 // Render new post page only if user is logged in (withAuth middleware)
 router.get("/new-post", withAuth, async (req, res) => {
