@@ -1,10 +1,7 @@
 // Boilerplate router creation
 const router = require('express').Router();
-const {multerUploads, datauri } = require('../../config/multer');
+const { multerUploads, datauri } = require('../../config/multer');
 const cloudinary = require('../../config/cloudinary');
-
-
-
 
 // Importing models
 const { Product, Category, User } = require('../../models');
@@ -49,52 +46,18 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
+// Upload a user's image to cloud storage and return the url link
 router.post('/upload-fileUpload', multerUploads.single('fileupload'), async (req, res) => {
     const file = datauri(req);
     cloudinary.uploader.upload(file.content,
-        {dpr: "auto", responsive: true, width: "auto", crop: "scale" },
+        { dpr: "auto", responsive: true, width: "auto", crop: "scale" },
         (error, result) => {
-           res.status(200).json(result.secure_url);
+            res.status(200).json(result.secure_url);
         }
-        )
+    );
 })
 
-
-router.get('/', async (req, res) => {
-    try {
-        const productData = await Product.findAll({
-            include: [{ model: Category }, { model: User }],
-        });
-        res.status(200).json(productData);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
-router.get('/:id', async (req, res) => {
-
-    try {
-        const productData = await Product.findOne({
-            where: {
-                id: req.params.id,
-            },
-            include:  [ { model: Category } ],
-        });
-        
-        if(!productData) {
-            res.status(404).json({ message: 'No product found with that ID'});
-            return;
-        }
-        console.log(productData);
-        const oneProduct = productData.get({ plain: true });
-        console.log(oneProduct);
-        res.status(200).json(oneProduct);
-    } catch (err) {
-        res.status(500).json(err);
-        console.log(err);
-    }
-});
-
+// Delete a product from a user
 router.delete('/:id', withAuth, async (req, res) => {
 
     try {
@@ -111,7 +74,7 @@ router.delete('/:id', withAuth, async (req, res) => {
 
         // Attempt to delete the product
         const deletedProduct = await Product.destroy({
-            where: { 
+            where: {
                 id: req.params.id
             }
         });

@@ -72,7 +72,36 @@ const updatePasswordHandler = async (event) => {
 
 }
 
+// Handle deleting a user's item
+const deleteUserItemHandler = async (event) => {
+    event.preventDefault();
+
+    // Get the id of the item to delete
+    const productID = event.target.id;
+
+    // Attempt to delete the item
+    const response = await fetch(`/api/products/${productID}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+    // If the item was successfully deleted, reload the page to update
+    if (response.ok) {
+        alert('Item removed successfully');
+        document.location.reload();
+    } else {
+        alert(response.statusText);
+    }
+
+}
+
 // Add click handlers to the update buttons
 document.querySelector('.update-email-form').addEventListener('submit', updateEmailHandler);
 document.querySelector('.update-name-form').addEventListener('submit', updateNameHandler);
 document.querySelector('.update-password-form').addEventListener('submit', updatePasswordHandler);
+
+// Add click handlers to each of the item deletion buttons
+let deleteButtons = document.querySelectorAll('.itemDeleteButton');
+deleteButtons.forEach(button => {
+    button.addEventListener('click', deleteUserItemHandler);
+});

@@ -1,44 +1,31 @@
 <div class="column ml-480">
-    <div class="mt-7r">
-        <div class="columns">
-            <div class="column">
+    <div class="columns mt-7r user-items">
+        <div class="column mlr-60-10 has-background-black-ter mt-33 rounded">
 
-                {{!-- <h2 class="title is-1 mx-2">Hello, {{name}}!</h2> --}}
+            <h3 class="user-info is-size-3 has-text-centered has-text-white">Your Items:</h3>
 
-                <div class="columns">
 
-                    <div class="column mlr-60-10 has-background-black-ter mt-33 rounded">
-                        <div class="columns">
-                            <div class="column">
-                                <div class="">
-                                    <h3 class="user-info is-size-3 has-text-centered has-text-white">{{name}}'s Items</h3>
-
-                                    {{!-- Update to make look better --}}
-                                    <div class="pt-20">
-                                        {{#each products}}
-                                        <div class="card mx-5">
-                                            <div class="card-image">
-                                                <figure class="image is-4by5">
-                                                    <a class="" href="/listing/{{id}}">
-                                                        <img src="{{img_url}}" alt="{{img_url}}" />
-                                                    </a>
-                                                </figure>
-                                            </div>
-                                        </div>
-                                        <h3 class="has-text-white mx-5">{{product_name}}
-                                            <br>
-                                            {{description}}
-                                        </h3>
-                                        {{/each}}
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+            {{#each products}}
+            <div class="card my-6 mx-4">
+                <div class="card-image">
+                    <a href="/listing/{{id}}">
+                        <figure class="image is-4by3">
+                            <img src="{{img_url}}">
+                        </figure>
+                    </a>
+                </div>
+                <div class="card-content">
+                    <div class="content">
+                        <p>{{description}}</p>
                     </div>
                 </div>
+                <div class="card-footer">
+                    <a id={{id}} class="card-footer-item itemDeleteButton">Delete this listing</a>
+                </div>
             </div>
+            {{/each}}
         </div>
-        <script src="./js/updateInfo.js"></script>
     </div>
+</div>
+<script src="./js/updateInfo.js"></script>
 </div>

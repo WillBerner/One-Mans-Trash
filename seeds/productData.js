@@ -70,7 +70,7 @@ const productdata = [
         description: 'Old gameboy color found in my sons room. Still works, but has no games.',
         img_url: '/images/Assets/gameboy.jpg',
         location_zipcode: '27602',
-        category_id: 3,
+        category_id: 6,
         user_id: 2,
     },
     {
@@ -86,7 +86,7 @@ const productdata = [
         description: 'This is a collection of gaming consoles that my husband has had since he was a teenager, but he never plays with them and they just collect dust so I am sure that he will not mind me getting rid of some junk.',
         img_url: 'https://www.realgear.net/wp-content/uploads/2017/08/retro-gaming-consoles-scaled.jpg',
         location_zipcode: '27223',
-        category_id: 3,
+        category_id: 6,
         user_id: 2,
     },
     {
