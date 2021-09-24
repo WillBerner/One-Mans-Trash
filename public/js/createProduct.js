@@ -36,10 +36,12 @@ const createProductHandler = async (event) => {
 }
 
 
-const input = document.getElementById('fileUpload')
+const input = document.querySelector("input[type='file']")
 
-input.addEventListener('change', () => {
+input.addEventListener('change', (e) => {
     uploadFile(input.files[0]);
+    var file_name = e.target.files[0].name;
+    document.getElementById('file-name').textContent = file_name;
 });
 
 const uploadFile = async (file) => {
@@ -55,8 +57,9 @@ const uploadFile = async (file) => {
     .then(res => res.json())
     .then(json => json)
     .catch(err => console.error(err));
+    console.log('this is imageUpload', imageUpload);
     return imageUpload;
-    // console.log(fd);
+    
 }
 
 
