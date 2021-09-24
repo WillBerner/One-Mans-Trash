@@ -236,3 +236,7 @@ body {
 .user-info {
   color: #ccc;
 }
+
+.user-items {
+  max-width: 600px;
+}

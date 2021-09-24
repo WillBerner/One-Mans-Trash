@@ -5,7 +5,6 @@ const storage = multer.memoryStorage();
 const multerUploads = multer({storage});
 const dUri = new Datauri();
 
-
 const datauri = req => { 
     console.log(req.files);
     return dUri.format(path.extname(req.files.fileupload.name).toString(), 

@@ -8,7 +8,8 @@ const createProductHandler = async (event) => {
     let category_name = document.getElementById('categories').value;
 
     let fileStr = await uploadFile(input.files[0]);
-    // Dummy project data for testing/development
+    
+    // Create request body using input fields and url string
     let product = {
         "product_name": product_name,
         "description": description,
@@ -30,26 +31,26 @@ const createProductHandler = async (event) => {
     } else {
         alert(response.statusText);
     }
-    
-    console.log(fileStr);
 
 }
 
-
+// Listen for changes to the "Choose a file" button
 const input = document.querySelector("input[type='file']")
 
+// Update the "Choose a file" selection witht he currently selected file's title
 input.addEventListener('change', (e) => {
-    uploadFile(input.files[0]);
     var file_name = e.target.files[0].name;
     document.getElementById('file-name').textContent = file_name;
 });
 
+// Attempt to upload a file to Cloudinary
 const uploadFile = async (file) => {
-    // console.log(file);
 
+    // Format user's posted image file
     const fd = new FormData();
     fd.append('fileupload', file);
 
+    // Attempt to post the image via the server
     let imageUpload = await fetch('api/products/upload-fileUpload', {
         method: 'POST',
         body: fd
@@ -57,11 +58,11 @@ const uploadFile = async (file) => {
     .then(res => res.json())
     .then(json => json)
     .catch(err => console.error(err));
-    console.log('this is imageUpload', imageUpload);
+
+    // return the uploaded image's info (ie accessable url)
     return imageUpload;
     
 }
-
 
 // Add click handler to the create button
 document.querySelector('.create-product').addEventListener('submit', createProductHandler);
