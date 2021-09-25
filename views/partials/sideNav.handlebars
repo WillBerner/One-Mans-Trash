@@ -1,13 +1,4 @@
 <!-- SIDENAV -->
-<div class="filters ml-5 mr-3 mt-3">
-  <h2 class="filterText b-bot">FILTERS</h2>
-  <h2 class="location" id="zipCode">27519</h2>
-  {{!-- <div class="columns m-auto">
-    <input class="column is-dark rounded border mr-5" id="myInput" type="text" placeholder="Enter Zip" />
-    <button class="column button is-dark rounded py-0 h-43" onclick="changeZip()">Change Zip</button>
-  </div> --}}
-</div>
-
 <div class="has-text-centered">
   <div class="category ml-5 mt-5">
     <h2 class="whichCategory is-size-4 mr-3 b-bot">SHOP BY CATEGORY</h2>
@@ -15,6 +6,7 @@
 </div>
 <div class="rounded h-550 ml-5 mr-3 mt-5 pt-35 has-background-black-ter">
   {{#each categories}}
-  {{> category}}
+  <a class="currentCat pt-35 has-text-centered has-text-white is-block is-size-5"
+    href="../category/{{category_name}}">{{category_name}}</a>
   {{/each}}
 </div>
