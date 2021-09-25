@@ -2,11 +2,14 @@
     <div class="columns mt-7r user-items">
         <div class="column mlr-60-10 has-background-black-ter mt-33 rounded">
 
+            <h3 class="user-info is-size-3 has-text-centered has-text-white">Hello, {{name}}!</h3>
+
+            <br>
+
             <h3 class="user-info is-size-3 has-text-centered has-text-white">Your Items:</h3>
 
-
             {{#each products}}
-            <div class="card my-6 mx-4">
+            <div class="card mb-6 mx-4">
                 <div class="card-image">
                     <a href="/listing/{{id}}">
                         <figure class="image is-4by3">
