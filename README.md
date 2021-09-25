@@ -12,9 +12,8 @@
 - [Installation](#installation)
 - [Technologies](#technologies)
 - [Usage](#usage)
-- [Testing](#testing)
 - [Screenshots](#screenshots)
-- [Additional-Info](#additional-info)
+- [Credits](#credits)
 
 ---
 
