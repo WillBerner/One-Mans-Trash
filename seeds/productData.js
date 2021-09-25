@@ -4,7 +4,7 @@ const productdata = [
     {
         product_name: 'Washer',
         description: 'Fairly old whirlpool washer that does not currently work. I do not have the time to fix it myself.',
-        img_url: '/images/Assets/washer.jpg',
+        img_url: 'https://content.instructables.com/ORIG/FID/4HNY/GC5ZHB93/FID4HNYGC5ZHB93.jpg?auto=webp',
         location_zipcode: '27513',
         category_id: 1,
         user_id: 1,
@@ -12,7 +12,7 @@ const productdata = [
     {
         product_name: 'Stove top',
         description: 'Used stove top. In working condition, no longer have need for it.',
-        img_url: '/images/Assets/stove-top.jpg',
+        img_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUH8LWNienQvOjMP-KUF_7lE9QvAL0aDlSng&usqp=CAU',
         location_zipcode: '27607',
         category_id: 1,
         user_id: 2,
@@ -36,7 +36,7 @@ const productdata = [
     {
         product_name: 'Couch',
         description: 'Older family couch. Has a little wear and tear, but can easily be repurposed.',
-        img_url: '/images/Assets/couch.jpg',
+        img_url: 'https://firedawgsjunkremoval.com/wp-content/uploads/2015/02/old-sofa-removal-in-indianapolis.jpg',
         location_zipcode: '27604',
         category_id: 2,
         user_id: 5,
@@ -44,7 +44,7 @@ const productdata = [
     {
         product_name: 'Side table',
         description: 'Damaged side table with scuff marks',
-        img_url: '/images/Assets/side-table.jpg',
+        img_url: 'https://antiquesworld.co.uk/wp-content/uploads/2018/06/68551.jpg',
         location_zipcode: '27604',
         category_id: 2,
         user_id: 6,
@@ -68,7 +68,7 @@ const productdata = [
     {
         product_name: 'Gameboy Color',
         description: 'Old gameboy color found in my sons room. Still works, but has no games.',
-        img_url: '/images/Assets/gameboy.jpg',
+        img_url: 'https://m.media-amazon.com/images/I/81Z-VLCxlJL._SX466_.jpg',
         location_zipcode: '27602',
         category_id: 6,
         user_id: 2,
@@ -76,7 +76,7 @@ const productdata = [
     {
         product_name: 'Old TV',
         description: 'I have an old TV with a large back, one of the really old ones.',
-        img_url: '/images/Assets/old-tv.jpg',
+        img_url: 'https://www.disablemycable.com/wp-content/uploads/2013/03/IMG_3483_small.jpg',
         location_zipcode: '27607',
         category_id: 3,
         user_id: 3,
@@ -108,7 +108,7 @@ const productdata = [
     {
         product_name: 'Axe',
         description: 'Wooden handle axe that I no longer need.',
-        img_url: '/images/Assets/axe.jpg',
+        img_url: 'https://i.ytimg.com/vi/0STKh85ApDs/maxresdefault.jpg',
         location_zipcode: '27616',
         category_id: 4,
         user_id: 7,

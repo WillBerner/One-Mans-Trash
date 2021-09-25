@@ -1,7 +1,6 @@
 // Boilerplate router creation
 const router = require("express").Router();
 
-const { all } = require(".");
 // Import user model and helper authorization middleware
 const { User, Product, Category } = require("../models");
 const withAuth = require("../utils/auth");
@@ -60,7 +59,6 @@ const getProductsByCategoryId = async (categoryId) => {
 };
 
 router.get("/", async (req, res) => {
-  console.log("hit home route");
   try {
     const categoryData = await getAllCategories();
     const productData = await getAllProducts();
