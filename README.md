@@ -69,7 +69,7 @@ One Man’s Trash lets individuals give away and receive unwanted items. There i
 ![HomePage](public/images/Assets/Homepage.png)
 ### **Login or Sign-up**
 ---
-![Login/Signup](public/images/Assets/Login:Signup.png)
+![Login/Signup](public/images/Assets/Login-Signup.png)
 ### **User Profile**
 ---
 ![Profile](public/images/Assets/Profile.png)
