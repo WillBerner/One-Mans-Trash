@@ -59,7 +59,7 @@ const productdata = [
     },
     {
         product_name: 'Gaming Chair',
-        description: 'My daughter used to use this old gaming chair in high-school, but since she moved off to college and since we are trying to turn her room into an office, I dont see any need for it.',
+        description: "My daughter used to use this old gaming chair in high-school, but since she moved off to college and since we are trying to turn her room into an office, I don't see any need for it.",
         img_url: 'https://www.nfm.com/dw/image/v2/BDFM_PRD/on/demandware.static/-/Sites-nfm-master-catalog/default/dw4d406f23/images/053/35/53350070-1.jpg?sw=365&sh=365&sm=fit',
         location_zipcode: '28334',
         category_id: 2,
@@ -67,7 +67,7 @@ const productdata = [
     },
     {
         product_name: 'Gameboy Color',
-        description: 'Old gameboy color found in my sons room. Still works, but has no games.',
+        description: "Old gameboy color found in my son's room. Still works, but has no games.",
         img_url: 'https://m.media-amazon.com/images/I/81Z-VLCxlJL._SX466_.jpg',
         location_zipcode: '27602',
         category_id: 6,
@@ -169,6 +169,47 @@ const productdata = [
         category_id: 5,
         user_id: 7,
     },
+    {
+        product_name: 'Old nintendo controller',
+        description: "I've just found this old nintendo controller while searching through my attic but I don't have a console anymore. If you can use it you're welcome to pick it up.",
+        img_url: 'https://www.lukiegames.com/assets/images/untitled3of3-042315.jpg',
+        location_zipcode: '27515',
+        category_id: 6,
+        user_id: 1,
+    },
+    {
+        product_name: 'Old Xbox',
+        description: "My youngest son hasn't touched this for years. He just plays on his computer now. No controllers.",
+        img_url: 'https://i.ebayimg.com/images/g/sDEAAOSwAP9b~XHK/s-l300.jpg',
+        location_zipcode: '27890',
+        category_id: 6,
+        user_id: 2,
+    },
+    {
+        product_name: 'Grey Shirt',
+        description: "Doesn't fit me anymore since loosing weight 💪🏻 men's size large.",
+        img_url: 'https://di2ponv0v5otw.cloudfront.net/posts/2019/07/24/5d3887b816105d9144a4d19f/m_5d3887cbbb22e39a20e008a1.jpg',
+        location_zipcode: '27513',
+        category_id: 8,
+        user_id: 3,
+    },
+    {
+        product_name: 'Light blue button down',
+        description: "Men's size medium. I work from home a lot now so I don't need as many.",
+        img_url: 'https://i.ebayimg.com/images/g/YpkAAOSw51lddXWU/s-l300.jpg',
+        location_zipcode: '27516',
+        category_id: 8,
+        user_id: 4,
+    },
+    {
+        product_name: 'Grey unisex pants',
+        description: "A pair of light grey unisex pants. No issues or tears, just not my style anymore.",
+        img_url: 'https://i.ebayimg.com/images/g/pF0AAOSwBP9blV2j/s-l400.jpg',
+        location_zipcode: '27516',
+        category_id: 8,
+        user_id: 5,
+    },
+
 
 ];
 
