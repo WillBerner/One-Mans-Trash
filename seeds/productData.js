@@ -187,7 +187,7 @@ const productdata = [
     },
     {
         product_name: 'Grey Shirt',
-        description: "Doesn't fit me anymore since loosing weight 💪🏻 men's size large.",
+        description: "Doesn't fit me anymore since losing weight 💪🏻 men's size large.",
         img_url: 'https://di2ponv0v5otw.cloudfront.net/posts/2019/07/24/5d3887b816105d9144a4d19f/m_5d3887cbbb22e39a20e008a1.jpg',
         location_zipcode: '27513',
         category_id: 8,
